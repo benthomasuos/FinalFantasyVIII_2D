@@ -1,0 +1,55 @@
+body {
+	background-color: #000;
+}
+
+.right_menu {
+	position: fixed;
+	right: 0;
+	width : 30%;
+	height: 80%;
+	text-align: left;
+	font-size: 16pt;
+	font-family: sans-serif;
+	color: #fff;
+	
+}
+
+.left_menu {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width 70%;
+	height: 100%;
+	
+}
+
+.menu-window {
+	background-color: gray;
+	border: outset 8px gray;
+	paddding: 4px;
+	
+}
+
+.menu-item {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	height: 40px;
+}
+
+.menu-help {
+	width: 100%;
+	height: 80px;
+	
+}
+
+.menu-location {
+	width: 100%;
+	height: 80px;
+	
+}
+
+.play-status {
+	position: fixed;
+	
+}

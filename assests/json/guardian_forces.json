@@ -1,0 +1,139 @@
+"quezacotl" : {
+        "name" : "Quezacotl",
+        "image" : "./assests/images/guardian_forces/quezacotl.png",
+        "sprite_map" : {
+         "world" : "./assests/sprites/guardian_forces/quezacotl_world.png",
+          "battle" : "./assests/sprites/guardian_forces/quezacotl_battle.png"
+        },
+        "lvl" : 1 ,
+        "exp" : {
+        		"total": 0,
+        		"to_nxt_lvl" : 1000
+        },
+        "ap" :    ,
+        "stats" : {
+          "hp" :  800,
+          "str" : 50  ,
+          "vit" : 50 ,
+          "mag" : 50 ,
+          "spr" :  50 ,
+          "spd" : 50 ,
+          "hit" : 255,
+          "luck" : 50,
+          
+          
+        },
+        "abilities" : {
+        	 "magic" : "active",
+        	 "gf" : {
+        	 			"status" : "active",
+        	 			"next" : null
+        	 		},
+        	 "draw" : {
+        	 			"status" : "active",
+        	 			"next" : null
+        	 		  },
+        	 "item" : {
+        	 			"status" : "active",
+        	 			"next" : null
+        	 		  },
+        	 "card" : {
+        	 			"status" : "waiting",
+        	 			"next" : null
+        	 		  },
+        	 "mag20" : { 
+        	 			"status" : "waiting",
+        	 			"next" : "mag40"
+        	 			},
+        	 "mag40" : {
+        	 				"status" : "hidden",
+        	 				"next" : null
+        	 			},
+        	 "spr20" : {
+        	 				"status" : "waiting",
+        	 				"next" : null
+        	 			},
+        	 "summag10" : {
+        	 				"status" : "waiting",
+        	 				"next" : "summag20"
+        	 				},
+        	 "summag20" : {
+        	 				"status" : "hidden",
+        	 				"next" : "summag30"
+        	 			 },
+        	 "summag30" : {
+        	 				"status" : "hidden",
+        	 				"next" : null
+        	 				},
+        	 "gfhp10" : {
+        	 				"status" : "waiting",
+        	 				"next" : "gfhp20"
+        	 				},
+        	 "gfhp20" : {
+        	 				"status" : "hidden",
+        	 				"next" : null
+        	 			 },
+        	 "boost" : {
+        	 				"status" : "waiting",
+        	 				"next" : null
+        	 			},
+        	 "hp_j" : {
+        	 				"status" : "waiting",
+        	 				"next" : null
+        	 		  },
+        	 "vit_j" : {
+        	 				"status" : "waiting",
+        	 				"next" : null
+        	 },
+        	 "mag_j" : {
+        	 				"status" : "waiting",
+        	 				"next" : [ "elem_atk_j", "elem_def_j" ]
+        	 },
+        	 "elem_atk_j" : {
+        	 				"status" : "hidden",
+        	 				"next" : null
+        	 },
+        	 "elem_def_j" : {
+        	 				"status" : "hidden",
+        	 				"next" : null
+        	 },
+        	 "t_mag_rf" : {
+        	 				"status" : "waiting", 
+        	 				"next" : null
+        	 }
+        	 
+        	   
+        },
+        "effects": {
+        	"compatability" : {
+ 				"quezacotl" : 20,
+        		"leviathan" : -10,
+        		"other" : -1.6 
+        		},
+        	"magic" : {
+        		"thunder" : 1,
+        		"thundara" : 2,
+        		"thundaga" : 2.4,
+        		"aero" : 0.2,
+        		"tornado" : 0.6,
+        		"water" : -0.8
+        	},
+        	"items": {
+        		"dynamo_stone" : 3.2,
+        		"luvluvg" : 20.6,
+        		"other" : -1.6,
+        		 
+        	}
+        
+        },
+        "compatability" : {
+        	"squall" : 580,
+        	"quistis" : 620,
+        	"zell" : 600,
+        	"selphie" : 580,
+        	"rinoa" : 640,
+        	"irvine" : 640,
+        	"seifer" : 500,
+        	"edea" : 760
+        }
+},
