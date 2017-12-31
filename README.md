@@ -1,2 +1,2 @@
 # FinalFantasyVIII_2D
-A 2D remake of Final Fantasy VIII using NW.js
+A 2D remake of Final Fantasy VIII using NW.js and javascript

@@ -1,97 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link type="text/stylesheet" href="../styles/menu.css" />
+	<link rel="stylesheet" href="../styles/menu.css">
 	<title>Menu</title>
-	<style>
-	
-	body {
-	background-color: #000;
-	color: #fff;
-	text-shadow: #222 2px 2px 2px;
-}
-
-.right_menu {
-	position: fixed;
-	right: 0;
-	width : 260px;
-	height: 560px;
-	text-align: left;
-	font-size: 16pt;
-	font-family: sans-serif;
-	color: #fff;
-	
-}
-
-.left_menu {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 680px;
-	height: 680px;
-	
-}
-
-.menu-window {
-	background-color: gray;
-	border: outset 8px gray;
-	paddding: 4px;
-	
-}
-
-.menu-title {
-	position:relative;
-	top: -4px;
-	margin-left: 10px;
-	background-color: gray;
-	padding: 4px;
-
-}
-
-.menu-item {
-	color: #fff;
-	font-family: sans-serif;
-	font-size: 1.5em;
-	height: 45px;
-	margin-left: 10px;
-}
-
-.menu-help {
-	width: 100%;
-	height: 60px;
-	
-}
-
-.menu-location {
-	width: 100%;
-	height: 50px;
-	
-}
-
-.character-status{
-	width: 95%;
-	height: 60px;
-	margin: auto;
-	
-}
-
-.character-other {
-	width: 95%;
-	height: 280px;
-	margin: auto;
-
-}
-
-.play-status {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	width: 280px;
-	height: 200px;
-}
-	
-	
-	</style>
 </head>
 <body>
 
@@ -100,46 +11,59 @@
 		<span class="menu-title">HELP</span>
 		<span class="menu-text"></span>
 	</div>
-	<div id="character-1" name="character-1" class="menu-window character-status" help-data="#" selectable>
-		<span class="menu-title">STATUS</span>
+	<div id="character-1" name="character-1" class="menu-window character-status" help-data="#" selectable="true">
+		<div class="menu-title">STATUS</div>
+		<span name="char_name">Squall</span>
+		<span name="max_hp"> / 9999</span>
+		<span name="current_hp">HP  1039 </span>
+		<span name="char_lvl">Lv 99</span>
+
 	</div>
-	<div id="character-2" name="character-2" class="menu-window character-status" help-data="#" selectable>
-		<span class="menu-title">STATUS</span>
+	<div id="character-2" name="character-2" class="menu-window character-status" help-data="#" selectable="true">
+		<div class="menu-title">STATUS</div>
+		<span name="char_name">Zell</span>
+		<span name="max_hp"> / 9999</span>
+		<span name="current_hp">HP  7863 </span>
+		<span name="char_lvl">Lv 99</span>
 	</div>
-	<div id="character-3" name="character-3" class="menu-window character-status" help-data="#" selectable>
-		<span class="menu-title">STATUS</span>
+	<div id="character-3" name="character-3" class="menu-window character-status" help-data="#" selectable="true">
+		<div class="menu-title">STATUS</div>
+		<span name="char_name">Quistis</span>
+		<span name="max_hp"> / 9999</span>
+		<span name="current_hp">HP  8965 </span>
+		<span name="char_lvl">Lv 99</span>
 	</div>
 	<div id="character-other" class="menu-window character-other">
 	</div>
-	<div id="location" class="menu-window menu-location"></div>
+	<div id="location" class="menu-window menu-location">Balamb Garden</div>
 </div>
 
 <div id="right_menu" class="menu-window right_menu">
-	<div id="junction-menu" class="menu-item" help-data="Junction menu" selectable active>Junction</div>
-	<div id="item-menu" class="menu-item" help-data="Item menu" selectable>Item</div>
-	<div id="magic-menu" class="menu-item" help-data="Magic menu" selctable>Magic</div>
-	<div id="status-menu" class="menu-item" help-data="Status menu" selectable>Status</div>
-	<div id="gf-menu" class="menu-item" help-data="Guardian Force menu" selectable>GF</div>
-	<div id="ability-menu" class="menu-item" help-data="Abilities menu" selectable>Ability</div>
-	<div id="switch-menu" class="menu-item" help-data="Switch characters" selectable>Switch</div>
-	<div id="card-menu" class="menu-item" help-data="Card menu" selectable>Card</div>
-	<div id="config-menu" class="menu-item" help-data="Config menu" seletable>Config</div>
-	<div id="tutorial-menu" class="menu-item" help-data="Show tutorials" selectable>Tutorial</div>
-	<div id="save-menu" class="menu-item" help-data="Save game" selectable disabled>Save</div>
+	<div id="junction-menu" class="menu-item" help-data="Junction menu" selectable="true" active>Junction</div>
+	<div id="item-menu" class="menu-item" help-data="Item menu" selectable="true">Item</div>
+	<div id="magic-menu" class="menu-item" help-data="Magic menu" selectable="true">Magic</div>
+	<div id="status-menu" class="menu-item" help-data="Status menu" selectable="true">Status</div>
+	<div id="gf-menu" class="menu-item" help-data="Guardian Force menu" selectable="true">GF</div>
+	<div id="ability-menu" class="menu-item" help-data="Abilities menu" selectable="true">Ability</div>
+	<div id="switch-menu" class="menu-item" help-data="Switch characters" selectable="true">Switch</div>
+	<div id="card-menu" class="menu-item" help-data="Card menu" selectable="true">Card</div>
+	<div id="config-menu" class="menu-item" help-data="Config menu" selectable="true">Config</div>
+	<div id="tutorial-menu" class="menu-item" help-data="Show tutorials" selectable="true">Tutorial</div>
+	<div id="save-menu" class="menu-item" help-data="Save game" selectable="true" disabled="true">Save</div>
 </div>
 <div id="status" class="menu-window play-status">
 	<div>
 		PLAY
-		<span name="total_play_time"></span>
+		<span name="total_play_time">01:20:56</span>
 	</div>
 	<div>
 		SeeD
-		<span name="seed_lvl"></span>
+		<span name="seed_lvl">lvl 8</span>
 	</div>
 	<div>
-		<span name="current_gil"></span>
+		<span name="current_gil">50000G</span>
 	</div>
-	 
+
 </div>
 
 
