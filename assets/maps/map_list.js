@@ -5,7 +5,7 @@ var b_garden_infirmary = {
     "map_size": 64,
     "layers":{
           "background":{
-              "tileset": "../tilemaps/local_maps/b_garden_background.png",
+              "tileset": "../tilemaps/local_maps/Castle.png",
               "map" : [
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
