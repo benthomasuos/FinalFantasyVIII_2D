@@ -2,17 +2,27 @@
 <html>
 <head>
 	<link rel="stylesheet" href="../styles/local_map.css">
+	<script src="../scripts/maps.js"></script>
+	<script src="../assets/maps/map_list.js"></script>
+	<script src="../common.js"></script>
 	<script src="../initGame.js"></script>
 	<script src="../story/mainStory.js"></script>
+	<script src="../controls.js"></script>
+	
 	<title>Local map</title>
 </head>
+
 <body> 
+
 Local Map - Test
 <div id="mapID"></div>
-<canvas id="mainScreen" width=1200 height=900>
-</canvas>
+<div id="debugInfo">Debug</div>
+
+<div style="border: solid #333">
+	<canvas id="mainScreen" width=600 height=600></canvas>
+</div>
+
+
 <script src="../gameState.js"></script>
-<script src="../assets/maps/map_list.js"></script>
-<script src="../scripts/maps.js"></script>
 </body>
 </html>

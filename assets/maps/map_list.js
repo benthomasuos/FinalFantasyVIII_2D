@@ -1,11 +1,8 @@
-var b_garden_infirmary = {
-    "location" : "Balamb Garden - Infirmary",
-    "width": 8,
-    "height": 8,
-    "map_size": 64,
-    "layers":{
+var b_garden_infirmary = new Local_Map()
+    b_garden_infirmary.location = "Balamb Garden - Infirmary"
+    b_garden_infirmary.tileset = "../assets/tile_maps/local_maps/Castle.png"
+    b_garden_infirmary.layers = {
           "background":{
-              "tileset": "../tilemaps/local_maps/Castle.png",
               "map" : [
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -18,7 +15,6 @@ var b_garden_infirmary = {
                 ]
           },
           "midground":{
-              "tileset": "../tilemaps/local_maps/b_garden_objects.png",
               "map" : [
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -31,7 +27,6 @@ var b_garden_infirmary = {
                 ]
           },
           "character":{
-              "tileset" : "../tilemaps/sprites/npc.png",
               "map" : [
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -44,7 +39,6 @@ var b_garden_infirmary = {
                 ]
           },
           "foreground":{
-              "tileset" : "../tilemaps/local_maps/b_garden_objects.png",
               "map" : [
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 1, 1, 1, 3, 1, 1, 1,
@@ -56,9 +50,5 @@ var b_garden_infirmary = {
                       1, 1, 1, 1, 1, 1, 1, 1
                 ]
           }
+
     }
-
-
-
-
-}
