@@ -1,7 +1,8 @@
 class GameData {
     constructor(){
-        this.worldSpeed = 100;
-        this.battleSpeed = 100;
+        this.worldSpeed = 250;
+        this.localSpeed = 250;
+        this.battleSpeed = 250;
         this.battleMode = "wait";
         this.gameStarted = new Date();
         this.timeElapsed = 0.0; // time since beginning of game
