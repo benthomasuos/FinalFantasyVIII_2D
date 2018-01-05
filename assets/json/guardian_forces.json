@@ -1,9 +1,9 @@
 "quezacotl" : {
         "name" : "Quezacotl",
-        "image" : "./assests/images/guardian_forces/quezacotl.png",
+        "image" : "./assets/images/guardian_forces/quezacotl.png",
         "sprite_map" : {
-         "world" : "./assests/sprites/guardian_forces/quezacotl_world.png",
-          "battle" : "./assests/sprites/guardian_forces/quezacotl_battle.png"
+         "world" : "./assets/sprites/guardian_forces/quezacotl_world.png",
+          "battle" : "./assets/sprites/guardian_forces/quezacotl_battle.png"
         },
         "lvl" : 1 ,
         "exp" : {
@@ -39,11 +39,15 @@
         	 		  },
         	 "card" : {
         	 			"status" : "waiting",
-        	 			"next" : null
+        	 			"next" : "card_mod"
         	 		  },
+	 		  "card_mod" : {
+        	 			"status" : "hidden",
+        	 			"next" : null
+	 		  },
         	 "mag20" : { 
         	 			"status" : "waiting",
-        	 			"next" : "mag40"
+        	 			"next" : [ "mag40", "elem_atk_j" ]
         	 			},
         	 "mag40" : {
         	 				"status" : "hidden",
@@ -79,11 +83,11 @@
         	 			},
         	 "hp_j" : {
         	 				"status" : "waiting",
-        	 				"next" : null
+        	 				"next" : "vit_j"
         	 		  },
         	 "vit_j" : {
-        	 				"status" : "waiting",
-        	 				"next" : null
+        	 				"status" : "hidden",
+        	 				"next" : "elem_def_j"
         	 },
         	 "mag_j" : {
         	 				"status" : "waiting",
@@ -95,11 +99,21 @@
         	 },
         	 "elem_def_j" : {
         	 				"status" : "hidden",
+        	 				"next" : "elem_def_j_2x"
+        	 },
+        	 "elem_def_j_2x" : {
+        	 				"status" : "hidden",
         	 				"next" : null
         	 },
         	 "t_mag_rf" : {
         	 				"status" : "waiting", 
+        	 				"next" : "mid_mag_rf"
+        	 },
+        	 "mid_mag_rf":{
+        	                "status" : "hidden", 
         	 				"next" : null
+        	 }
+        	     
         	 }
         	 
         	   

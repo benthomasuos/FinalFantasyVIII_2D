@@ -1,9 +1,9 @@
 var b_garden_infirmary = new Local_Map()
     b_garden_infirmary.location = "Balamb Garden - Infirmary"
     b_garden_infirmary.tileset = "../assets/tile_maps/local_maps/Castle.png"
+    b_garden_infirmary.music = gameMusic.blue_fields;
     b_garden_infirmary.layers = {
-          "background":{
-              "map" : [
+          background:[
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -12,10 +12,8 @@ var b_garden_infirmary = new Local_Map()
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
-                ]
-          },
-          "midground":{
-              "map" : [
+                ],
+          midground:[
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -24,10 +22,8 @@ var b_garden_infirmary = new Local_Map()
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
-                ]
-          },
-          "character":{
-              "map" : [
+                ],
+          character:[
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -36,10 +32,8 @@ var b_garden_infirmary = new Local_Map()
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
-                ]
-          },
-          "foreground":{
-              "map" : [
+                ],
+          foreground:[
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 1, 1, 1, 3, 1, 1, 1,
                       1, 1, 1, 1, 3, 1, 1, 1,
@@ -49,6 +43,5 @@ var b_garden_infirmary = new Local_Map()
                       1, 1, 1, 1, 3, 1, 1, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
                 ]
-          }
 
     }

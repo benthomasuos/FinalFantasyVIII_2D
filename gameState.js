@@ -6,12 +6,12 @@ currentGameData.currentQuest = new Quest()
 console.log(currentGameData)
 
 
-setInterval(1000, function(){
+setInterval(function(){
     var timeElapsed = new Date() - currentGameData.gameStarted
     currentGameData.timeElapsed = timeElapsed
     document.getElementById('debugInfo').innerHTML = timeElapsed
     
-})
+}, 1000)
 
 function saveGame(saveSlot){
     // need to also implement save game overwrite checking
@@ -36,7 +36,7 @@ var Game = {
             render: {},
             sprites: {
                 character : {
-                    x: 0, y:0
+                    x: 0, y: 0
                 }
             }
         },
@@ -79,18 +79,27 @@ Game.local.load = function (mainCharacter, map) {
     return [
         Loader.loadImage('tiles', map.tileset ),
         Loader.loadImage('character', '../assets/tile_maps/characters/' + mainCharacter + '_sprites.png')
+        
     ];
 };
 
 Game.local.init = function (map) {
+    
+    init_music(map.music);
+    
     this.tileAtlas = Loader.getImage('tiles');
-    //console.log(this.tileAtlas)
+    console.log(this.tileAtlas)
     this.sprites.character = {x: 128, y: 384, image: Loader.getImage('character')};
     console.log(this.sprites)
     //console.log(this.hero)
     this.maxX = map.cols * map.tile_size - map.width;
     this.maxY = map.rows * map.tile_size - map.height;
+   
+    
 };
+
+
+
 
 Game.local.run = function (context) {
    // console.log(context)
@@ -98,6 +107,7 @@ Game.local.run = function (context) {
     this._previousElapsed = 0;
     var character = currentGameData.getMainCharacter()
     console.log("Main character = " + character)
+    //console.log(currentGameData.localWorldState)
     var p = this.load(character, currentGameData.localWorldState.map);
     Promise.all(p).then(function (loaded) {
         this.init( currentGameData.localWorldState );
@@ -165,8 +175,10 @@ Game.local.sprites.move = function(character, delta, dirx, diry){
 
 
 
+
 Game.local.render = function (map) {
     // draw map background layer
+    console.log(map.layers)
     map.drawLayer(map.layers.background, this.tileAtlas, this.ctx);
     // draw game sprites
     //console.log(this.hero)
@@ -178,6 +190,6 @@ Game.local.render = function (map) {
 
 window.onload = function () {
     var context = document.getElementById('mainScreen').getContext('2d');
-    //console.log(context)
+    init_music(currentGameData.localWorldState.map.music)
     Game.local.run(context);
 };

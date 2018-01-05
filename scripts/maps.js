@@ -1,14 +1,14 @@
 function Local_Map() {
     this.location = "test";
-    this.width = 8;
-    this.height = 8;
+    this.width = 512;
+    this.height = 512;
     this.cols = 8;
     this.rows = 8;
     this.tile_size = 64;
-    this.tileset = '../assets/tile_maps/local_maps/demo_tiles.png';
+    this.music = '';
+    this.tileset = '/assets/tile_maps/local_maps/demo_tiles.png';
     this.layers = {
-          background:{
-              "map" : [
+          "background":[
                       12, 12, 1, 1, 1, 1, 1, 1,
                       12, 22, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -17,10 +17,8 @@ function Local_Map() {
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
-                ]
-          },
-          midground:{
-              "map" : [
+                ],
+          "midground":[
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -29,10 +27,8 @@ function Local_Map() {
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
-                ]
-          },
-          character:{
-              "map" : [
+                ],
+          character:[
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
@@ -41,10 +37,8 @@ function Local_Map() {
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 2, 2, 2, 2, 2, 2, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
-                ]
-          },
-          foreground:{
-              "map" : [
+                ],
+          foreground:[
                       1, 1, 1, 1, 1, 1, 1, 1,
                       1, 1, 1, 1, 3, 1, 1, 1,
                       1, 1, 1, 1, 3, 1, 1, 1,
@@ -54,7 +48,6 @@ function Local_Map() {
                       1, 1, 1, 1, 3, 1, 1, 1,
                       1, 1, 1, 1, 1, 1, 1, 1
                 ]
-          }
     };
     
     this.drawMap = function(context) {
@@ -89,7 +82,8 @@ function Local_Map() {
     };
      
     this.getTile = function( layer, col ,row ) {
-       //console.log(this.layers[layer][row * this.cols + col])
+       console.log( this )
+       console.log(this.layers[layer])
        return this.layers[layer][row * this.cols + col];
      }
 
