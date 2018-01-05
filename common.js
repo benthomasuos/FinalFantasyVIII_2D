@@ -32,12 +32,12 @@ Loader.getImage = function (key) {
 
 
 
-function init_music(file){
-    console.log('Playing Music')
-    var gameAudio = document.createElement("audio");
-    gameAudio.setAttribute('autoplay', true);
-    gameAudio.setAttribute('loop', true);
-    gameAudio.src = file;
-    gameAudio.play();
+function init_music(track){
+    //console.log('Playing Music ',  track.file.name)
+    var gameMusic = document.getElementById("music");
+    gameMusic.setAttribute('autoplay', true);
+    gameMusic.setAttribute('loop', true);
+    gameMusic.src = track.file.name;
+    gameMusic.play();
     //gameAudio.pause();
 }

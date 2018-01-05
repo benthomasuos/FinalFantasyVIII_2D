@@ -1,67 +1,74 @@
 // music.js
 var gameMusic = {
+    "default":{
+        name: "Blue Fields",
+        file: {
+            name: './assets/music/Blue_Fields_01.mp3',
+            artist: "Nobuo Uematsu"
+        }
+    },
     //Disk One
     "liberi_fatali":{
         name: "Liberi Fatali",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Liberi_Fatali_01.mp3',
             artist: "Nobuo Uematsu"
-            
+
         }
     },
     "balamb_garden":{
         name: "Balamb Garden",
         file: {
-            name: '../assets/music/balamb_garden_1.mp3',
+            name: './assets/music/Balamb_Garden_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "blue_fields":{
         name: "Blue Fields",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Blue_Fields_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "dont_be_afraid":{
         name: "Don't be Afraid",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Dont_Be_Afraid_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "the_winner":{
         name: "The Winner",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/The_Winner_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "find_your_way":{
         name: "Find Your Way",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Find_Your_Way_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "seed":{
         name: "SeeD",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Seed_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "the_landing":{
         name: "The Landing",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/The_Landing_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "starting_up":{
         name: "Starting Up",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Starting_Up_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
@@ -75,14 +82,14 @@ var gameMusic = {
     "the_loser":{
         name: "The Loser",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "never_look_back":{
         name: "Never Look Back",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/.mp3',
             artist: "Nobuo Uematsu"
         }
     },
