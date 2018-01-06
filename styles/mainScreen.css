@@ -16,6 +16,11 @@ height: 960px;
 font-family: "FinalFantasy";
 }
 
+canvas{
+	position:absolute;
+	background-color: transparent
+}
+
 .menu-window {
 background-color: #888;
 border: outset 8px #555;

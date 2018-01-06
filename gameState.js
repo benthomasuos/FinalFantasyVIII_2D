@@ -1,6 +1,5 @@
 var currentGameData = new GameData()
-
-currentGameData.currentMap = b_garden_infirmary
+var currentMap = b_garden_infirmary
 currentGameData.currentQuest = new Quest()
 
 console.log(currentGameData)
@@ -74,43 +73,48 @@ var Game = {
     */
 };
 
-Game.local.load = function (mainCharacter, map) {
-    console.log(map)
+
+
+Game.local.load = function (mainCharacter) {
+    currentGameData.localWorldState.map = this.map
+    console.log(this.map)
     return [
-        Loader.loadImage('tiles', map.tileset ),
+        Loader.loadImage('tiles', this.map.tileset ),
         Loader.loadImage('character', './assets/tile_maps/characters/' + mainCharacter + '.png')
 
     ];
 };
 
-Game.local.init = function (map) {
+
+Game.local.init = function () {
+    
     Keyboard.listenForEvents(Keyboard._keys)
-    init_music(currentGameData.localWorldState.map.music)
+    init_music(this.map.music)
 
     this.tileAtlas = Loader.getImage('tiles');
     //console.log(this.tileAtlas)
     this.sprites.character = {x: 32, y: 32, image: Loader.getImage('character')};
     //console.log(map)
     //console.log(this.hero)
-    this.maxX = map.cols * map.tile_size - map.width;
-    this.maxY = map.rows * map.tile_size - map.height;
-
+    this.maxX = this.map.cols * this.map.tile_size - this.map.width;
+    this.maxY = this.map.rows * this.map.tile_size - this.map.height;
 
 };
 
 
 
 
-Game.local.run = function (context) {
-   //console.log(context)
-    this.ctx = context;
+Game.local.run = function ( map ) {
+    this.map = map
+    
+    console.log(this.map)
     this._previousElapsed = 0;
     var character = currentGameData.getMainCharacter()
     //console.log("Main character = " + character)
     //console.log(currentGameData.localWorldState)
-    var p = this.load(character, currentGameData.localWorldState.map);
+    var p = this.load(character, this.map);
     Promise.all(p).then(function (loaded) {
-        this.init( currentGameData.localWorldState.map );
+        this.init( this.map );
         window.requestAnimationFrame(this.tick);
     }.bind(this));
 };
@@ -119,7 +123,8 @@ Game.local.tick = function (elapsed) {
     window.requestAnimationFrame(this.tick);
 
     // clear previous frame
-    this.ctx.clearRect(0, 0, 512, 512);
+    this.map.contexts.character.clearRect(0, 0, 600, 600);
+    this.map.contexts.foreground.clearRect(0, 0, 600, 600);
 
     // compute delta time in seconds -- also cap it
     var delta = (elapsed - this._previousElapsed) / 1000.0;
@@ -127,7 +132,7 @@ Game.local.tick = function (elapsed) {
     this._previousElapsed = elapsed;
 
     //this.update(delta);
-    this.update(0.02)
+    this.update(delta)
     this.render();
 }.bind(Game.local);
 
@@ -168,11 +173,9 @@ Game.local.update = function (delta) {
 };
 
 Game.local.sprites.move = function(character, delta, dirx, diry){
-
-
     //console.log(character, delta, dirx, diry)
     //var SPEED = parseFloat(currentGameData.localSpeed);
-    var SPEED = 256
+    var SPEED = 100
     this[character].x += dirx * SPEED * delta;
     this[character].y += diry * SPEED * delta;
     // clamp values
@@ -183,21 +186,26 @@ Game.local.sprites.move = function(character, delta, dirx, diry){
 
 
 Game.local.render = function () {
-    var map = currentGameData.localWorldState.map
     // draw map background layer
-    map.drawLayer("background", this.tileAtlas, this.ctx);
+    console.log(this.map)
+    this.map.drawBackground( this.tileAtlas );
     // draw game sprites
-    this.ctx.drawImage(this.sprites.character.image, this.sprites.character.x, this.sprites.character.y);
+    this.map.contexts.character.drawImage(this.sprites.character.image, this.sprites.character.x, this.sprites.character.y);
     // draw map top layer
-    map.drawLayer("foreground", this.tileAtlas, this.ctx);
+    this.map.drawForeground( this.tileAtlas );
     //track sprite
-    //this.ctx.rect(this.sprites.character.x, this.sprites.character.y,32,32);
+    //this.tracker = this.ctx.rect(this.sprites.character.x, this.sprites.character.y,32,32);
     //this.ctx.strokeStyle="red";
     //this.ctx.stroke();
 };
 
 
 window.onload = function () {
-    var context = document.getElementById('mainScreen').getContext('2d');
-    Game.local.run(context);
+    var contexts = {}
+    contexts.background = document.getElementById('background').getContext('2d') ;   
+    contexts.character = document.getElementById('character').getContext('2d') ;   
+    contexts.foreground = document.getElementById('foreground').getContext('2d') ;   
+    console.log(contexts)
+    currentMap.contexts = contexts
+    Game.local.run( currentMap );
 };

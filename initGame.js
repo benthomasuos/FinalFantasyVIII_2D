@@ -8,9 +8,12 @@ class GameData {
         this.timeElapsed = 0.0; // time since beginning of game
         this.currentQuest = new Quest;
         this.localWorldState = {
-            map: b_garden_infirmary,
-            char_position: { x : 120 , y : 120 }
-        };
+                map: b_garden_infirmary,
+                char_position: { x : 120 , y : 120 }
+            };
+        this.worldState = {
+                char_position: { x : 120 , y : 120 }
+            };
         this.characters = {
 
             "squall" : {
