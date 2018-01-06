@@ -10,7 +10,7 @@ Keyboard.DOWN = 83;       //  w
 
 Keyboard.ACTION = 74;     //  j
 Keyboard.MENU = 75;       //  k
-Keyboard.BACK = 76;       //  l
+Keyboard.CANCEL = 76;       //  l
 Keyboard.PAUSE = 80;      //  p
 Keyboard.SELECT = 79;     //  o
 

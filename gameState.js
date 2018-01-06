@@ -1,8 +1,5 @@
-var currentGameData = new GameData()
+var currentGameData = ''
 var currentMap = b_garden_infirmary
-currentGameData.currentQuest = new Quest()
-
-console.log(currentGameData)
 
 
 setInterval(function(){
@@ -11,6 +8,26 @@ setInterval(function(){
     document.getElementById('debugInfo').innerHTML = timeElapsed
 
 }, 1000)
+
+
+window.onload = function () {
+    $('.state').hide();
+    Game.mainMenu.init()
+    if(window.localStorage){
+        $('#loadGame').show(1000)
+    }
+
+};
+
+
+
+function newGame(){
+
+    currentGameData = new GameData()
+    Game.state = 'local'
+    return true
+
+}
 
 function saveGame(saveSlot){
     // need to also implement save game overwrite checking
@@ -27,7 +44,9 @@ function loadGame(saveSlot){
 
 
 
+
 var Game = {
+    state: 'start',
     local: {
             init: {},
             run : {},
@@ -50,7 +69,16 @@ var Game = {
             run : {},
             tick : {},
             render: {}
-        }
+        },
+    menu: {
+        init: {}
+
+    },
+     mainMenu: {
+        init: {}
+
+    }
+    
     /*
      fmv: {
             init: {},
@@ -71,6 +99,27 @@ var Game = {
             render: {}
         }
     */
+};
+
+
+Game.local.run = function ( map ) {
+    this.map = map
+    
+    console.log(this.map)
+    this._previousElapsed = 0;
+    var character = currentGameData.getMainCharacter()
+    //console.log("Main character = " + character)
+    //console.log(currentGameData.localWorldState)
+    
+    if(Game.state === 'local'){
+        var p = this.load(character, this.map);
+        
+        Promise.all(p).then(function (loaded) {
+            this.init( this.map );
+            window.requestAnimationFrame(this.tick);
+        }.bind(this));
+    
+    }
 };
 
 
@@ -104,20 +153,8 @@ Game.local.init = function () {
 
 
 
-Game.local.run = function ( map ) {
-    this.map = map
-    
-    console.log(this.map)
-    this._previousElapsed = 0;
-    var character = currentGameData.getMainCharacter()
-    //console.log("Main character = " + character)
-    //console.log(currentGameData.localWorldState)
-    var p = this.load(character, this.map);
-    Promise.all(p).then(function (loaded) {
-        this.init( this.map );
-        window.requestAnimationFrame(this.tick);
-    }.bind(this));
-};
+
+
 
 Game.local.tick = function (elapsed) {
     window.requestAnimationFrame(this.tick);
@@ -151,6 +188,12 @@ Game.local.update = function (delta) {
 }
     if (Keyboard.isDown(Keyboard.DOWN)) { diry = 1; //console.log("Moving down")
 }
+
+
+    if (Keyboard.isDown(Keyboard.MENU)){
+        
+        Game.menu.init()
+    }
 
     if (Keyboard.isDown(Keyboard.PAUSE)) {
 
@@ -187,7 +230,7 @@ Game.local.sprites.move = function(character, delta, dirx, diry){
 
 Game.local.render = function () {
     // draw map background layer
-    console.log(this.map)
+    //console.log(this.map)
     this.map.drawBackground( this.tileAtlas );
     // draw game sprites
     this.map.contexts.character.drawImage(this.sprites.character.image, this.sprites.character.x, this.sprites.character.y);
@@ -199,8 +242,13 @@ Game.local.render = function () {
     //this.ctx.stroke();
 };
 
-
-window.onload = function () {
+function runLocalWorld(){
+    
+    Game.state = 'local';
+    init_music(gameMusic.balamb_garden)
+    $('#mainScreen').fadeIn(2000)
+    $('#mainMenu').fadeOut(2000)
+    
     var contexts = {}
     contexts.background = document.getElementById('background').getContext('2d') ;   
     contexts.character = document.getElementById('character').getContext('2d') ;   
@@ -208,4 +256,53 @@ window.onload = function () {
     console.log(contexts)
     currentMap.contexts = contexts
     Game.local.run( currentMap );
-};
+    
+}
+
+
+
+
+
+Game.mainMenu.init = function(){
+    $('#mainMenu').show()
+ 
+    
+}
+
+
+
+Game.menu.init = function(){
+    
+    Game.state = 'menu';
+    init_music(gameMusic.blue_fields)
+    $('#mainScreen').fadeOut(2000)
+    $('#mainMenu').fadeIn(2000)
+    
+}
+
+Game.menu.keys = function(){
+    Game.state = 'menu';
+    this.state = {'main': {}};
+    $('#mainScreen').fadeOut('slow')
+    $('#mainMenu').fadeIn('slow')
+    
+    this.layout = {}
+    this.layout.main = {}
+    
+     if (Keyboard.isDown(Keyboard.LEFT)) {
+         moveOption(this.state.currentSelection, 'left')
+     }
+      if (Keyboard.isDown(Keyboard.ACTION)) {
+          selectOption(this.state.currentOption)
+      }
+       if (Keyboard.isDown(Keyboard.CANCEL)) {
+           Game.local.run(contexts)
+       }
+        if (Keyboard.isDown(Keyboard.LEFT)) {}
+         if (Keyboard.isDown(Keyboard.LEFT)) {}
+          if (Keyboard.isDown(Keyboard.LEFT)) {}
+    
+    
+}
+
+
