@@ -1,10 +1,11 @@
 class GameData {
     constructor(){
+        this.debug = true;
         this.worldSpeed = 256;
         this.localSpeed = 256;
         this.battleSpeed = 256;
         this.battleMode = "wait";
-        this.gameStarted = new Date();
+        this.gameStarted = moment().format('MMMM Do YYYY, h:mm:ss a');
         this.timeElapsed = 0.0; // time since beginning of game
         this.currentQuest = new Quest;
         this.localWorldState = {

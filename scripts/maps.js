@@ -1,9 +1,9 @@
 class Local_Map {
     constructor(){
     this.location = "test";
-    this.width = 16;
-    this.height = 16;
-    this.cols = 16;
+    this.width = 20;
+    this.height = 15;
+    this.cols = 20;
     this.rows = 16;
     this.tile_size = 32;
     this.music = gameMusic.default;
@@ -13,10 +13,10 @@ class Local_Map {
     this.randomBattleChance = 0.1 ; // A battle every 10 steps exactly
     this.monsters = {
         // monsterID : percentage likelihood_of_battle
-        
+
         }
     };
-    
+
     /*
     drawMap(context) {
           this.drawLayer( this.layers.background )
@@ -25,7 +25,7 @@ class Local_Map {
           this.drawLayer( this.layers.foreground )
     }; // drawMap()
     */
-    
+
     drawBackground( tileAtlas ) {
       //console.log(layer , tileAtlas, context)
       //console.log("Drawing layer: " + layer + " for map: " + this.location)
@@ -70,7 +70,7 @@ class Local_Map {
       }
     };
 
-    
+
 
     getTile( layer, col ,row ) {
        return this.layers[layer][row * this.cols + col];

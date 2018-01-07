@@ -48,3 +48,16 @@ function playSound(sound){
     gameMusic.src = sound.file;
     gameMusic.play();
 }
+
+function debug(status){
+    var game = currentGameData
+    $('#debug').html('')
+    if(status == true){
+        $('#debug').html('Game started: '+ game.gameStarted +'<br>Time elapsed: '+  moment(game.timeElapsed).format('H:mm:ss'))
+        if(Game.local._previousElapsed){
+            $('#debug').append($('#debug').html() + '<br>FPS '+ Game.local._previousElapsed)
+        }
+
+    }
+
+}

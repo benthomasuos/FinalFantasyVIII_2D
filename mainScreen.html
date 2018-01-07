@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./styles/mainScreen.css">
 	<script src="./scripts/jquery.js"></script>
+	<script src="./scripts/moment.js"></script>
 	<script src="./scripts/music.js"></script>
 	<script src="./scripts/soundEffects.js"></script>
 	<script src="./scripts/maps.js"></script>
@@ -12,6 +13,7 @@
 	<script src="./initGame.js"></script>
 	<script src="./story/mainStory.js"></script>
 	<script src="./controls.js"></script>
+	<script src="./scripts/animateSprites.js"></script>
 
 	<title>Local map</title>
 </head>
@@ -19,25 +21,23 @@
 <body>
 <div id="cursor"></div>
 
-Local Map - Test
-<div id="mapID"></div>
-<div id="debugInfo">Debug</div>
+<div id="debug"></div>
 
 
 <div class='state' id="mainMenu" >
 	<img src='./assets/images/ffviii_main_menu.jpg' width=800; height=600 />
 	<div id='options'>
-		<div class='menuOption' id='newGame'>New Game</div>
-		<div class='menuOption' id='loadGame'>Continue</div>
-		<div class='menuOption' id='credits'>Credits</div>
+		<div name='menuOption' class='menuOption' id='newGame'>New Game</div>
+		<div name='menuOption' class='menuOption' id='loadGame'>Continue</div>
+		<div name='menuOption' class='menuOption' id='credits'>Credits</div>
 	</div>
 </div>
 
 <div class='state' id="loadGame" >
 	<div id='options'>
-		<div class='menuOption' id='slot_1'>Slot 1</div>
+		<div name='menuOption' class='menuOption' id='slot_1'>Slot 1</div>
 	</div>
-	
+
 </div>
 
 
@@ -49,9 +49,9 @@ Local Map - Test
 </div>
 
 
-	
+
 <div class='state' id="gameMenu">
-	
+
 	<div id="main" class="left_menu" >
 	<div id="help_bar" class="menu-window menu-help">
 		<span class="menu-title">HELP</span>
@@ -85,29 +85,29 @@ Local Map - Test
 </div>
 
 <div id="right_menu" class="menu-window right_menu">
-	<div id="junction-menu" class="menu-item" help-data="Junction menu" selectable="true" active>Junction</div>
-	<div id="item-menu" class="menu-item" help-data="Item menu" selectable="true">Item</div>
-	<div id="magic-menu" class="menu-item" help-data="Magic menu" selectable="true">Magic</div>
-	<div id="status-menu" class="menu-item" help-data="Status menu" selectable="true">Status</div>
-	<div id="gf-menu" class="menu-item" help-data="Guardian Force menu" selectable="true">GF</div>
-	<div id="ability-menu" class="menu-item" help-data="Abilities menu" selectable="true">Ability</div>
-	<div id="switch-menu" class="menu-item" help-data="Switch characters" selectable="true">Switch</div>
-	<div id="card-menu" class="menu-item" help-data="Card menu" selectable="true">Card</div>
-	<div id="config-menu" class="menu-item" help-data="Config menu" selectable="true">Config</div>
-	<div id="tutorial-menu" class="menu-item" help-data="Show tutorials" selectable="true">Tutorial</div>
-	<div id="save-menu" class="menu-item" help-data="Save game" selectable="true" disabled="true">Save</div>
+	<div name='menuOption' id="junction-menu" class="menu-item" help-data="Junction menu" selectable="true" active>Junction</div>
+	<div name='menuOption' id="item-menu" class="menu-item" help-data="Item menu" selectable="true">Item</div>
+	<div name='menuOption' id="magic-menu" class="menu-item" help-data="Magic menu" selectable="true">Magic</div>
+	<div name='menuOption' id="status-menu" class="menu-item" help-data="Status menu" selectable="true">Status</div>
+	<div name='menuOption' id="gf-menu" class="menu-item" help-data="Guardian Force menu" selectable="true">GF</div>
+	<div name='menuOption' id="ability-menu" class="menu-item" help-data="Abilities menu" selectable="true">Ability</div>
+	<div name='menuOption' id="switch-menu" class="menu-item" help-data="Switch characters" selectable="true">Switch</div>
+	<div name='menuOption' id="card-menu" class="menu-item" help-data="Card menu" selectable="true">Card</div>
+	<div name='menuOption' id="config-menu" class="menu-item" help-data="Config menu" selectable="true">Config</div>
+	<div name='menuOption' id="tutorial-menu" class="menu-item" help-data="Show tutorials" selectable="true">Tutorial</div>
+	<div name='menuOption' id="save-menu" class="menu-item" help-data="Save game" selectable="true" disabled="true">Save</div>
 </div>
 <div id="status" class="menu-window play-status">
 	<div>
 		PLAY
-		<span name="total_play_time">01:20:56</span>
+		<span id="total_play_time">01:20:56</span>
 	</div>
 	<div>
 		SeeD
-		<span name="seed_lvl">lvl 8</span>
+		<span id="seed_lvl">lvl 8</span>
 	</div>
 	<div>
-		<span name="current_gil">50000G</span>
+		<span id="current_gil">50000G</span>
 	</div>
 
 </div>
@@ -120,7 +120,6 @@ Local Map - Test
 <audio id="music" autoplay loop></audio>
 <audio id="soundEffect"></audio>
 
-<script src="./scripts/animateSprites.js"></script>
-<script src="./gameState.js"></script>
+<script src="./game.js"></script>
 </body>
 </html>
