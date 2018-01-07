@@ -1,6 +1,7 @@
-var currentGameData = ''
-var currentMap = b_garden_infirmary
+var currentGameData = '';
+var currentMap = b_garden_infirmary;
 
+var menuState = 0
 
 setInterval(function(){
     var timeElapsed = new Date() - currentGameData.gameStarted
@@ -11,22 +12,24 @@ setInterval(function(){
 
 
 window.onload = function () {
-    $('.state').hide();
-    Game.mainMenu.init()
-    if(window.localStorage){
-        $('#loadGame').show(1000)
-    }
-
+    Game.init()
 };
 
 
 
+
+
+
+
+
+
+
+
+
 function newGame(){
-
     currentGameData = new GameData()
-    Game.state = 'local'
+    console.log(currentGameData)
     return true
-
 }
 
 function saveGame(saveSlot){
@@ -35,17 +38,18 @@ function saveGame(saveSlot){
     return true
 }
 
-function loadGame(saveSlot){
 
+
+function loadGame(saveSlot){
     currentGame = window.localStorage.getItem("saveGame_" + saveSlot, currentGame)
     return true
-
 }
 
 
 
 
 var Game = {
+    init : function(){},
     state: 'start',
     local: {
             init: {},
@@ -70,12 +74,14 @@ var Game = {
             tick : {},
             render: {}
         },
-    menu: {
-        init: {}
+    gameMenu: {
+        init: {},
+        position: []
 
     },
      mainMenu: {
-        init: {}
+        init: {},
+        position: []
 
     }
     
@@ -102,8 +108,31 @@ var Game = {
 };
 
 
-Game.local.run = function ( map ) {
-    this.map = map
+
+Game.init = function(){
+    $('.state').hide();
+    state_init('', 'mainMenu')
+    
+    if(window.localStorage){
+        $('#loadGame').show(1000)
+    }
+    
+}
+
+
+Game.local.run = function ( ) {
+    
+    Game.state = 'local';
+    init_music(gameMusic.balamb_garden)
+    
+    var contexts = {}
+    contexts.background = document.getElementById('background').getContext('2d') ;   
+    contexts.character = document.getElementById('character').getContext('2d') ;   
+    contexts.foreground = document.getElementById('foreground').getContext('2d') ;   
+    console.log(contexts)
+    currentMap.contexts = contexts
+    
+    this.map = currentMap
     
     console.log(this.map)
     this._previousElapsed = 0;
@@ -136,7 +165,6 @@ Game.local.load = function (mainCharacter) {
 
 
 Game.local.init = function () {
-    
     Keyboard.listenForEvents(Keyboard._keys)
     init_music(this.map.music)
 
@@ -191,8 +219,7 @@ Game.local.update = function (delta) {
 
 
     if (Keyboard.isDown(Keyboard.MENU)){
-        
-        Game.menu.init()
+        state_init(Game.state, 'gameMenu')
     }
 
     if (Keyboard.isDown(Keyboard.PAUSE)) {
@@ -242,67 +269,140 @@ Game.local.render = function () {
     //this.ctx.stroke();
 };
 
-function runLocalWorld(){
+
+
+Game.mainMenu.run = function(){
+    var menuOptions = $('.menuOption:visible')
+    console.log(menuOptions)
+    setCursor(menuOptions)
+    $(window).keydown(function(event){
+        console.log(event.which)
+        if(event.which == Keyboard.UP){ var dir = -1; updatePosition(menuOptions, dir) }
+        if(event.which == Keyboard.DOWN){ var dir = 1; updatePosition(menuOptions, dir) }
+        if(event.which == Keyboard.ACTION){
+            console.log(menuOptions[menuState].id)
+             if( menuOptions[menuState].id == 'newGame'){ newGame() }
+            
+            state_init(Game.state, menuOptions[menuState].id)
+        }
+        
+            console.log(menuState)
+        })
+
+}
+
+/*
+Game.loadMenu.run = function(){
+    var menuOptions = $('.menuOptions:visible')
+    console.log(menuOptions)
+    setCursor(menuOptions)
+    $('#newGame').on('click', function(){
+        playSound(soundEffects.menu.confirm)
+        })
+    $(window).keydown(function(event){
+        console.log(event.which)
+        if(event.which == Keyboard.UP){ var dir = -1; updatePosition(menuOptions, dir) }
+        if(event.which == Keyboard.DOWN){ var dir = 1; updatePosition(menuOptions, dir) }
+        if(event.which == Keyboard.ACTION){
+           
+            state_init(Game.state, menuOptions[menuState].id)
+        }
+        
+            console.log(menuState)
+        })
+
+}
+*/
+
+function controls_init(){
     
-    Game.state = 'local';
-    init_music(gameMusic.balamb_garden)
-    $('#mainScreen').fadeIn(2000)
-    $('#mainMenu').fadeOut(2000)
-    
-    var contexts = {}
-    contexts.background = document.getElementById('background').getContext('2d') ;   
-    contexts.character = document.getElementById('character').getContext('2d') ;   
-    contexts.foreground = document.getElementById('foreground').getContext('2d') ;   
-    console.log(contexts)
-    currentMap.contexts = contexts
-    Game.local.run( currentMap );
     
 }
 
 
 
+function updatePosition(options, dir){
+    menuState += dir
+    
+    if(menuState < 0){
+        menuState = options.length - 1
+    }
+    else if(menuState >= options.length){
+        menuState = 0   
+    }
+    console.log(menuState)
+    setCursor(options)
+    return menuState
+}
 
 
-Game.mainMenu.init = function(){
-    $('#mainMenu').show()
- 
+Game.gameMenu.run = function(){
+var menuOptions = $('.menu-item')
+    console.log(menuOptions)
+    setCursor(menuOptions)
+    $(window).keydown(function(event){
+        console.log(event.which)
+        if(event.which == Keyboard.UP){ var dir = -1; updatePosition(menuOptions, dir) }
+        if(event.which == Keyboard.DOWN){ var dir = 1; updatePosition(menuOptions, dir) }
+        if(event.which == Keyboard.ACTION){
+            console.log(menuOptions[menuState].id)
+             if( menuOptions[menuState].id == 'newGame'){ newGame() }
+            
+            state_init(Game.state, menuOptions[menuState].id)
+        }
+        
+            console.log(menuState)
+        })
+
+    
+    
+    
+    //init_music(gameMusic.blue_fields)
+   
     
 }
 
 
 
-Game.menu.init = function(){
-    
-    Game.state = 'menu';
-    init_music(gameMusic.blue_fields)
-    $('#mainScreen').fadeOut(2000)
-    $('#mainMenu').fadeIn(2000)
-    
+function setCursor(options){
+    console.log("Sound plays", )
+    var cursor = $('#cursor')
+    var item = options[menuState]
+    console.log(item)
+    //cursor.attr('name', options[menuState].id)
+    cursor.offset( { 'left': Math.floor(item.offsetLeft - item.width/2 - 4), 'top': Math.floor(item.offsetTop) } )
 }
 
-Game.menu.keys = function(){
-    Game.state = 'menu';
-    this.state = {'main': {}};
-    $('#mainScreen').fadeOut('slow')
-    $('#mainMenu').fadeIn('slow')
-    
-    this.layout = {}
-    this.layout.main = {}
-    
-     if (Keyboard.isDown(Keyboard.LEFT)) {
-         moveOption(this.state.currentSelection, 'left')
-     }
-      if (Keyboard.isDown(Keyboard.ACTION)) {
-          selectOption(this.state.currentOption)
-      }
-       if (Keyboard.isDown(Keyboard.CANCEL)) {
-           Game.local.run(contexts)
-       }
-        if (Keyboard.isDown(Keyboard.LEFT)) {}
-         if (Keyboard.isDown(Keyboard.LEFT)) {}
-          if (Keyboard.isDown(Keyboard.LEFT)) {}
-    
-    
+function playSound(sound){
+    //console.log('Playing Music ',  track.file.name)
+    var gameMusic = document.getElementById("soundEffect");
+    gameMusic.src = sound.file;
+    gameMusic.play();
 }
 
 
+
+function state_init(previousState, newState){
+    
+    Game.state = newState
+    if(newState != previousState ){
+        $(window).off("keydown")
+        menuState = 0
+        console.log('State changed to ' + newState)
+        $('.state').fadeOut(2000)
+       
+    
+        if(newState == 'newGame'){
+            
+             $('#mainScreen').fadeIn(2000)
+            Game.local.run()
+            
+        }
+        else{
+             $('#' + newState).fadeIn(2000)
+            Game[Game.state].run()
+            
+        }
+    }
+        
+    }

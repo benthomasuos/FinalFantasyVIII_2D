@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="./styles/mainScreen.css">
 	<script src="./scripts/jquery.js"></script>
 	<script src="./scripts/music.js"></script>
+	<script src="./scripts/soundEffects.js"></script>
 	<script src="./scripts/maps.js"></script>
 	<script src="./assets/maps/map_list.js"></script>
 	<script src="./common.js"></script>
@@ -16,6 +17,7 @@
 </head>
 
 <body>
+<div id="cursor"></div>
 
 Local Map - Test
 <div id="mapID"></div>
@@ -23,12 +25,21 @@ Local Map - Test
 
 
 <div class='state' id="mainMenu" >
-	<img src='./assets/images/ffviii_main_menu.jpg' width=600; height=600 />
+	<img src='./assets/images/ffviii_main_menu.jpg' width=800; height=600 />
 	<div id='options'>
-		<div class='menuOptions' id='newGame'>New Game</div>
-		<div class='menuOptions' id='loadGame'>Continue</div>
+		<div class='menuOption' id='newGame'>New Game</div>
+		<div class='menuOption' id='loadGame'>Continue</div>
+		<div class='menuOption' id='credits'>Credits</div>
 	</div>
 </div>
+
+<div class='state' id="loadGame" >
+	<div id='options'>
+		<div class='menuOption' id='slot_1'>Slot 1</div>
+	</div>
+	
+</div>
+
 
 
 <div class='state' id="mainScreen" style="border: solid #333">
@@ -39,7 +50,7 @@ Local Map - Test
 
 
 	
-<div class='state' id="mainMenu">
+<div class='state' id="gameMenu">
 	
 	<div id="main" class="left_menu" >
 	<div id="help_bar" class="menu-window menu-help">
@@ -107,7 +118,7 @@ Local Map - Test
 
 
 <audio id="music" autoplay loop></audio>
-<audio id="soundEffects" autoplay loop></audio>
+<audio id="soundEffect"></audio>
 
 <script src="./scripts/animateSprites.js"></script>
 <script src="./gameState.js"></script>

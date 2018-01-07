@@ -31,13 +31,14 @@ window.addEventListener('keydown', function(event){
 Keyboard.listenForEvents = function (keys) {
     window.addEventListener('keydown', this._onKeyDown.bind(this));
     window.addEventListener('keyup', this._onKeyUp.bind(this));
-
+    console.log('Keyboard attached')
     keys.forEach(function (key) {
         this._keys[key] = false;
     }.bind(this));
 }
 
 Keyboard._onKeyDown = function (event) {
+    console.log('Key pressed down')
     var keyCode = event.keyCode;
     if (keyCode in this._keys) {
         event.preventDefault();
@@ -46,6 +47,7 @@ Keyboard._onKeyDown = function (event) {
 };
 
 Keyboard._onKeyUp = function (event) {
+    console.log('Key released')
     var keyCode = event.keyCode;
     if (keyCode in this._keys) {
         event.preventDefault();

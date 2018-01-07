@@ -39,15 +39,12 @@ function init_music(track){
     gameMusic.setAttribute('loop', true);
     gameMusic.src = track.file.name;
     gameMusic.play();
-    gameMusic.pause();
+    //gameMusic.pause();
 }
 
-function init_music(track){
+function playSound(sound){
     //console.log('Playing Music ',  track.file.name)
-    var gameMusic = document.getElementById("music");
-    gameMusic.setAttribute('autoplay', true);
-    gameMusic.setAttribute('loop', true);
-    gameMusic.src = track.file.name;
+    var gameMusic = document.getElementById("soundEffect");
+    gameMusic.src = sound.file;
     gameMusic.play();
-    gameMusic.pause();
 }

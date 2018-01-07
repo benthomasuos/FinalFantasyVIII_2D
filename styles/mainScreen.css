@@ -124,14 +124,18 @@ div[disabled="true"] {
 }
 
 #options {
-	position: fixed;
+	position: absolute;
 	text-align: center;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding-top: 500px;
+	top: 450px;
+	left: 370px;
 	margin: auto;
 	color: #333;
+}
+
+.menuOptions{
+	margin-bottom: 6px;
+	width: 100px;
+	
 }
 
 .menuOptions:hover {
@@ -143,4 +147,14 @@ div[disabled="true"] {
 	color: #ddd;
 	
 }
+
+#cursor {
+	position: absolute;
+	width: 56px;
+	height: 32px;
+	background-image: url('../assets/icons/hand_cursor.png');
+	z-index: 999;
+}
+
+
 
