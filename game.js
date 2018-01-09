@@ -58,7 +58,7 @@ var menuState = 0
 
 setInterval(function(){
     currentGameData.timeElapsed += 1000
-    debug(currentGameData.debug)
+    //debug(currentGameData.debug)
 }, 1000)
 
 
@@ -101,6 +101,7 @@ var Game = {
     state: 'start',
     local: {
             init: {},
+            contexts: {},
             run : {},
             tick : {},
             render: {},
@@ -173,12 +174,12 @@ Game.local.run = function ( ) {
     Game.state = 'local';
     init_music(gameMusic.balamb_garden)
 
-    var contexts = {}
-    contexts.background = document.getElementById('background').getContext('2d') ;
-    contexts.character = document.getElementById('character').getContext('2d') ;
-    contexts.foreground = document.getElementById('foreground').getContext('2d') ;
-    console.log(contexts)
-    currentMap.contexts = contexts
+    this.contexts = {}
+    this.contexts.background = document.getElementById('background').getContext('2d') ;
+    this.contexts.character = document.getElementById('character').getContext('2d') ;
+    this.contexts.foreground = document.getElementById('foreground').getContext('2d') ;
+    console.log(this.contexts)
+    currentMap.contexts = this.contexts
 
     this.map = currentMap
 
@@ -223,7 +224,9 @@ Game.local.init = function () {
     //console.log(this.hero)
     this.maxX = this.map.cols * this.map.tile_size - this.map.width;
     this.maxY = this.map.rows * this.map.tile_size - this.map.height;
-
+    this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,{x: 200, y: 200 }, this.contexts.foreground)
+    this.squall.load()
+    this.squall.drawFrame(1)
 };
 
 

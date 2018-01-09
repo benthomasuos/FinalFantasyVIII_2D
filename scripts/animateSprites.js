@@ -1,39 +1,78 @@
 // animateSprites.js
 
-var animate = function (tileset){
-    
-    this.tileset = tileset;
-    this.cols = 10;
-    this.rows = 4;
-    
-    this.drawFrame = function( x, y, tileAtlas, ) {
-     //console.log(tileAtlas)
-      //console.log("Drawing layer: " + layer + " for map: " + this.location)
-      for (var c = 0; c < this.width; c++) {
-             for (var r = 0; r < this.height; r++) {
-                 var tile = this.getTile(layer, c, r);
-                 
-                 if (tile !== 0) { // 0 => empty tile
-                     this.ctx.drawImage(
-                         tileAtlas, // image
-                         (tile - 1) * this.tile_size, // source x
+// animateSprites.js
+
+class Sprite {
+ constructor(key, tileset, tilesize, num_width, num_height, position, cxt){
+    this.key = key;
+    this.tileset = tileset
+    this.tilesize = tilesize
+    this.x = position.x
+    this.y = position.y
+    this.frames = num_width * num_height
+  }
+  
+
+ 
+ load(){
+  return Loader.loadImage(this.key, this.tileset)
+ }
+
+ image(){
+  return Loader.getImage(this.key)
+  
+ }
+ 
+ create(){
+  
+ 
+ }
+ 
+ move( dirx, diry, delta ){
+    //console.log(character, delta, dirx, diry)
+    //var SPEED = parseFloat(currentGameData.localSpeed);
+    var SPEED = 100
+    this.x += dirx * SPEED * delta;
+    this.y += diry * SPEED * delta;
+ 
+ }
+ 
+ drawFrame( num ) {
+  console.log('Drawing animation frame for sprite')
+   this.cxt.drawImage(
+                         this.image(), // image
+                         (num - 1) * this.tilesize, // source x
                          0, // source y
-                         this.tile_size, // source width
-                         this.tile_size, // source height
-                         c * this.tile_size,  // target x
-                         r * this.tile_size, // target y
-                         this.tile_size, // target width
-                         this.tile_size // target height
+                         this.tilesize, // source width
+                         this.tilesize, // source height
+                         this.x,  // target x
+                         this.y, // target y
+                         this.tilesize, // target width
+                         this.tilesize // target height
                      );
-                 }
-             }
-      }
-    };
-     
-    this.getTile = function( layer, col ,row ) {
-       //console.log(this.layers[layer][row * this.cols + col])
-       return this.layers[layer][row * this.cols + col];
-     }
-    
-    
+ 
+ 
+ }
+ 
+ animate(){
+  //drawFrame
+  //remove frame
+  //draw next frame
+  
+ }
+ 
+ pause(){
+  console.log('Animation paused')
+ }
+ 
+ resume(){
+  console.log('Animation resumed')
+ }
+ 
+ destroy(){
+  console.log('Sprite destroyed')
+  
+ }
+ 
+ 
 }
