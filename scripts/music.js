@@ -124,49 +124,63 @@ var gameMusic = {
     "tell_me":{
         name: "Tell Me",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "fear":{
         name: "Fear",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "the_man_with_the_machine_gun":{
         name: "The Man with the Machine Gun",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "julia":{
         name: "Julia",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "roses_and_wine":{
         name: "Roses and Wine",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "junction":{
         name: "Junction",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Junction_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },
     "timber_owls":{
         name: "Timber Owls",
         file: {
-            name: '../assets/music/.mp3',
+            name: './assets/music/Timber_Owls.mp3',
+            artist: "Nobuo Uematsu"
+        }
+    },
+    "my_mind":{
+        name: "My Mind",
+        file: {
+            name: './assets/music/My_Mind_01.mp3',
+            artist: "Nobuo Uematsu"
+        }
+    },
+    "overture":{
+        name: "Overture",
+        file: {
+            name: './assets/music/Overture_01.mp3',
             artist: "Nobuo Uematsu"
         }
     }

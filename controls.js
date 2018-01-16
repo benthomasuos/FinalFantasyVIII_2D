@@ -38,7 +38,7 @@ Keyboard.listenForEvents = function (keys) {
 }
 
 Keyboard._onKeyDown = function (event) {
-    console.log('Key pressed down')
+    //console.log('Key pressed down')
     var keyCode = event.keyCode;
     if (keyCode in this._keys) {
         event.preventDefault();
@@ -47,7 +47,7 @@ Keyboard._onKeyDown = function (event) {
 };
 
 Keyboard._onKeyUp = function (event) {
-    console.log('Key released')
+    //console.log('Key released')
     var keyCode = event.keyCode;
     if (keyCode in this._keys) {
         event.preventDefault();

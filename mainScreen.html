@@ -6,16 +6,16 @@
 	<script src="./scripts/jquery.js"></script>
 	<script src="./scripts/moment.js"></script>
 	<script src="./scripts/music.js"></script>
-	<script src="./scripts/soundEffects.js"></script>
 	<script src="./scripts/maps.js"></script>
 	<script src="./assets/maps/map_list.js"></script>
 	<script src="./common.js"></script>
 	<script src="./initGame.js"></script>
 	<script src="./story/mainStory.js"></script>
 	<script src="./controls.js"></script>
-	<script src="./scripts/animateSprites.js"></script>
+	<script src="./scripts/soundManager.js"></script>
+	<script src="./scripts/sprites.js"></script>
 
-	<title>Local map</title>
+	<title>Final Fantasy VIII - 2D</title>
 </head>
 
 <body>
@@ -43,9 +43,9 @@
 
 
 <div class='state' id="mainScreen" style="border: solid #333">
-	<canvas id="background" width=600 height=600></canvas>
-	<canvas id="character" width=600 height=600></canvas>
-	<canvas id="foreground" width=600 height=600></canvas>
+	<canvas id="background" width=640 height=492></canvas>
+	<canvas id="character" width=640 height=492></canvas>
+	<canvas id="foreground" width=640 height=492></canvas>
 </div>
 
 
@@ -117,8 +117,8 @@
 
 
 
-<audio id="music" autoplay loop></audio>
-<audio id="soundEffect"></audio>
+<audio id="music" src="./assets/music/Overture_01.mp3" autoplay="true" loop="true"></audio>
+<audio id="soundEffect" autoplay="false" loop="false"></audio>
 
 <script src="./game.js"></script>
 </body>

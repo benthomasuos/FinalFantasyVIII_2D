@@ -2,8 +2,8 @@ class Local_Map {
     constructor(){
     this.location = "test";
     this.width = 20;
-    this.height = 15;
-    this.cols = 20;
+    this.height = 20;
+    this.cols = 16;
     this.rows = 16;
     this.tile_size = 32;
     this.music = gameMusic.default;
@@ -35,7 +35,7 @@ class Local_Map {
                  if (tile !== 0) { // 0 => empty tile
                      this.contexts.background.drawImage(
                          tileAtlas, // image
-                         (tile - 1) * this.tile_size, // source x
+                         tile * this.tile_size, // source x
                          0, // source y
                          this.tile_size, // source width
                          this.tile_size, // source height
@@ -56,7 +56,7 @@ class Local_Map {
                  if (tile !== 0) { // 0 => empty tile
                      this.contexts.foreground.drawImage(
                          tileAtlas, // image
-                         (tile - 1) * this.tile_size, // source x
+                         tile * this.tile_size, // source x
                          0, // source y
                          this.tile_size, // source width
                          this.tile_size, // source height

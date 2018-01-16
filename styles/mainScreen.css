@@ -37,8 +37,9 @@ canvas{
 }
 
 .state {
-	width: 600px;
-	height: 600px
+	width: 640px;
+	height: 492px;
+	margin : auto;
 
 }
 

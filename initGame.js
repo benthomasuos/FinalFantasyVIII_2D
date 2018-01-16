@@ -21,7 +21,7 @@ class GameData {
                 inParty: true,
                 inTeam: true,
                 mainCharacter: true,
-                sprite_map: "./assets/tile_maps/characters/'squall_sprites.png",
+                sprite_map: "./assets/tile_maps/characters/squall_sprites.png",
                 status: "none",
                 magic : {
                 },
@@ -37,7 +37,7 @@ class GameData {
                 inParty: false,
                 inTeam: false,
                 mainCharacter: false,
-                sprite_map: "./assets/tile_maps/characters/'quistis_sprites.png",
+                sprite_map: "./assets/tile_maps/characters/quistis_sprites.png",
                 status: "none",
                 magic : {
                 },
@@ -53,7 +53,7 @@ class GameData {
                 inParty: false,
                 inTeam: false,
                 mainCharacter: false,
-                sprite_map: "./assets/tile_maps/characters/'zell_sprites.png",
+                sprite_map: "./assets/tile_maps/characters/zell_sprites.png",
                 status: "none",
                 magic : {
                 },

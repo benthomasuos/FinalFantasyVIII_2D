@@ -48,7 +48,7 @@ class Cursor {
 }
 var cursor = new Cursor($('#cursor'), 'newGame')
 
-
+var sprites = []
 
 
 var currentGameData = new GameData();
@@ -58,7 +58,7 @@ var menuState = 0
 
 setInterval(function(){
     currentGameData.timeElapsed += 1000
-    //debug(currentGameData.debug)
+    debug(currentGameData.debug)
 }, 1000)
 
 
@@ -161,6 +161,7 @@ var Game = {
 Game.init = function(){
     $('.state').hide();
     state_init('', 'mainMenu')
+    init_music(gameMusic.overture)
 
     if(window.localStorage){
         $('#loadGame').show(1000)
@@ -206,8 +207,8 @@ Game.local.load = function (mainCharacter) {
     currentGameData.localWorldState.map = this.map
     console.log(this.map)
     return [
-        Loader.loadImage('tiles', this.map.tileset ),
-        Loader.loadImage('character', './assets/tile_maps/characters/' + mainCharacter + '.png')
+        Loader.loadImage('tiles', this.map.tileset )
+        //Loader.loadImage('character', './assets/tile_maps/characters/' + mainCharacter + '.png')
 
     ];
 };
@@ -219,14 +220,14 @@ Game.local.init = function () {
 
     this.tileAtlas = Loader.getImage('tiles');
     //console.log(this.tileAtlas)
-    this.sprites.character = {x: 32, y: 32, image: Loader.getImage('character')};
+    //this.sprites.character = {x: 32, y: 32, image: Loader.getImage('character')};
     //console.log(map)
     //console.log(this.hero)
     this.maxX = this.map.cols * this.map.tile_size - this.map.width;
     this.maxY = this.map.rows * this.map.tile_size - this.map.height;
-    this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,{x: 200, y: 200 }, this.contexts.foreground)
-    this.squall.load()
-    this.squall.drawFrame(1)
+    this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,{x: 20, y: 20 })
+    sprites.push(this.squall)
+
 };
 
 
@@ -257,15 +258,16 @@ Game.local.tick = function (elapsed) {
 
 
 Game.local.update = function (delta) {
+    this.squall.isMoving = false
     var dirx = 0;
     var diry = 0;
-    if (Keyboard.isDown(Keyboard.LEFT)) { dirx = -1; //console.log("Moving left")
+    if (Keyboard.isDown(Keyboard.LEFT)) { dirx = -1; this.squall.walkLeft(delta) //console.log("Moving left")
 }
-    if (Keyboard.isDown(Keyboard.RIGHT)) { dirx = 1; //console.log("Moving right")
+    if (Keyboard.isDown(Keyboard.RIGHT)) { dirx = 1; this.squall.walkRight(delta) //console.log("Moving right")
 }
-    if (Keyboard.isDown(Keyboard.UP)) { diry = -1; //console.log("Moving up")
+    if (Keyboard.isDown(Keyboard.UP)) { diry = -1; this.squall.walkUp(delta) //console.log("Moving up")
 }
-    if (Keyboard.isDown(Keyboard.DOWN)) { diry = 1; //console.log("Moving down")
+    if (Keyboard.isDown(Keyboard.DOWN)) { diry = 1; this.squall.walkDown(delta) //console.log("Moving down")
 }
 
 
@@ -311,7 +313,9 @@ Game.local.render = function () {
     //console.log(this.map)
     this.map.drawBackground( this.tileAtlas );
     // draw game sprites
-    this.map.contexts.character.drawImage(this.sprites.character.image, this.sprites.character.x, this.sprites.character.y);
+    ////////
+    this.squall.draw()
+
     // draw map top layer
     this.map.drawForeground( this.tileAtlas );
     //track sprite
@@ -327,8 +331,9 @@ Game.mainMenu.run = function(){
     cursor.setPositionAt('newGame')
     $(window).keydown(function(event){
         console.log(event.which)
-        if(event.which == Keyboard.UP){ var dir = -1; cursor.updatePosition(dir) }
-        if(event.which == Keyboard.DOWN){ var dir = 1; cursor.updatePosition(dir) }
+
+        if(event.which == Keyboard.UP){ var dir = -1; cursor.updatePosition(dir); playSound('menu_move') }
+        if(event.which == Keyboard.DOWN){ var dir = 1; cursor.updatePosition(dir); playSound('menu_move') }
         if(event.which == Keyboard.ACTION){
              if( cursor.currentOption == 'newGame'){ newGame() }
 
@@ -370,6 +375,7 @@ Game.gameMenu.run = function(){
     updateMenu()
     $(window).keydown(function(event){
         console.log(event.which)
+
         if(event.which == Keyboard.UP){ var dir = -1; cursor.updatePosition(dir) }
         if(event.which == Keyboard.DOWN){ var dir = 1; cursor.updatePosition(dir) }
         if(event.which == Keyboard.ACTION){
@@ -389,13 +395,6 @@ Game.gameMenu.run = function(){
 
 }
 
-
-function playSound(sound){
-    //console.log('Playing Music ',  track.file.name)
-    var gameMusic = document.getElementById("soundEffect");
-    gameMusic.src = sound.file;
-    gameMusic.play();
-}
 
 
 
