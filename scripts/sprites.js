@@ -31,7 +31,11 @@ class Sprite {
     this.draw()
   }
 
+  currentTile(map){
+      if(map == undefined){ var map = currentGameData.Local_Map}
 
+      return tile
+  }
 
  walkUp( delta ){
      this.isMoving = true
@@ -40,11 +44,7 @@ class Sprite {
     this.animate()
     if( !this.hasCollided ){
         this.y -=  delta * this.speed;
-        this.distance += delta * this.speed
-    }
-    else{
-        this.y += 1
-        this.hasCollided = false
+        this.distance += Math.floor(delta * this.speed)
     }
     this.direction = 'up'
  }
@@ -55,11 +55,7 @@ class Sprite {
     this.animate()
     if( !this.hasCollided ){
         this.y +=  delta * this.speed;
-        this.distance += delta * this.speed
-    }
-    else{
-        this.y -= 1
-        this.hasCollided = false
+        this.distance += Math.floor(delta * this.speed)
     }
     this.direction = 'down'
  }
@@ -70,11 +66,7 @@ class Sprite {
     this.animate()
     if( !this.hasCollided ){
         this.x +=  delta * this.speed;
-        this.distance += delta * this.speed
-    }
-    else{
-        this.x -= 1
-        this.hasCollided = false
+        this.distance += Math.floor(delta * this.speed)
     }
     this.direction = 'right'
  }
@@ -85,11 +77,7 @@ class Sprite {
     this.animate()
     if( !this.hasCollided ){
         this.x -=  delta * this.speed;
-        this.distance += delta * this.speed
-    }
-    else{
-        this.x += 1
-        this.hasCollided = false
+        this.distance += Math.floor(delta * this.speed)
     }
     this.direction = 'left'
  }
@@ -97,13 +85,29 @@ class Sprite {
  checkCollision(){
      var canvas = document.getElementById('character')
      //check with sides of mainScreen
-     if(this.hasCollided == false){
-         if(this.x <= 0 || this.x >= canvas.width - this.width || this.y <= 0|| this.y >= canvas.height - this.height){
-            this.hasCollided = true
-            console.log('Collision detected')
+     //if(this.hasCollided == false){
+         if(this.x < 0){
+             this.x = 0
+             console.log('Collision detected')
+             //this.hasCollided = true
+         }
+         else if( this.x > canvas.width - this.width){
+             this.x = canvas.width - this.width
+             //this.hasCollided = true
+             console.log('Collision detected')
+         }
+         else if( this.y < 0){
+             this.y = 0
+             //this.hasCollided = true
+             console.log('Collision detected')
+         }
+         else if( this.y > canvas.height - this.height){
+             this.y = canvas.height - this.height
+             //this.hasCollided = true
+             console.log('Collision detected')
+         }
 
-        }
-    }
+    //}
 
      //check with objects
         //get list of objects in the scene, their current x, y positions and widths/heights
@@ -112,10 +116,15 @@ class Sprite {
         //get list of npcs in the scene, their current x, y positions and widths/heights
  }
 
+checkExits(side){
+    var exits = currentGameData.Local_Map.exits
+    console.log(exits)
+}
+
  draw() {
    this.cxt.clearRect(this.x, this.y, this.width, this.height)
    var frame = this.animationFrames[this.frameIndex]
-   console.log(frame,  Math.floor( frame/this.tileset.width)* this.height)
+   //console.log(frame,  Math.floor( frame/this.tileset.width)* this.height)
    this.cxt.drawImage(
                          this.image, // image
                          frame%this.tileset.width * this.width, // source x
@@ -157,7 +166,7 @@ class Sprite {
 
 }
 animate(tick){
-    window.requestAnimationFrame(this.animate)
+    //window.requestAnimationFrame(this.animate)
     this.update(tick)
 
 

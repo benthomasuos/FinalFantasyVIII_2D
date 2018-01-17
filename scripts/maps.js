@@ -10,6 +10,13 @@ class Local_Map {
     this.tileset = './assets/tile_maps/local_maps/demo_tiles.png';
     this.contexts = {};
     this.layers = {};
+    this.init = { x: 20, y: 20 };
+    this.exits = {
+        "up" : [{ "map": "demo", "tiles" : [] }],
+        "right" : [{ "map": "demo", "tiles" : [] }],
+        "down" : [{ "map": "demo", "tiles" : [] }],
+        "left" : [{ "map": "demo", "tiles" : [] }]
+    };
     this.randomBattleChance = 0.1 ; // A battle every 10 steps exactly
     this.monsters = {
         // monsterID : percentage likelihood_of_battle

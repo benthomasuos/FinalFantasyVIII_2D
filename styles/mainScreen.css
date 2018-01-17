@@ -36,6 +36,15 @@ canvas{
 
 }
 
+#messageBox{
+	display: none;
+	max-width: 300px;
+	max-height: 200px;
+	position: absolute;
+	top: 200px;
+	margin: auto
+}
+
 .state {
 	width: 640px;
 	height: 492px;

@@ -57,9 +57,9 @@ var currentMap = b_garden_infirmary;
 var menuState = 0
 
 setInterval(function(){
-    currentGameData.timeElapsed += 1000
+    currentGameData.timeElapsed += 20
     debug(currentGameData.debug)
-}, 1000)
+}, 20)
 
 
 window.onload = function () {
@@ -70,9 +70,28 @@ window.onload = function () {
 
 
 
+$(window).on('keypress', function(evt){
+    console.log(evt.which, Game.state)
+    if(evt.which == 48 && Game.state == "local"){ // zero key to save only on local screen
+        message("Game Saved")
+        saveGame()
+    }
+
+})
 
 
 
+function message(msg){
+    var msgBox = $('#messageBox')
+    msgBox.html(msg)
+    msgBox.show()
+    setTimeout(function(){
+        msgBox.hide()
+    }, 2000)
+
+
+
+}
 
 function newGame(){
     currentGameData = new GameData()
@@ -80,16 +99,17 @@ function newGame(){
     return true
 }
 
-function saveGame(saveSlot){
+function saveGame(){
     // need to also implement save game overwrite checking
-    window.localStorage.setItem("saveGame_" + saveSlot, currentGame)
+    var numSaves = window.localStorage.length
+    window.localStorage.setItem("saveGame_" + parseInt(numSaves) + 1, JSON.stringify(currentGameData) )
     return true
 }
 
 
 
-function loadGame(saveSlot){
-    currentGame = window.localStorage.getItem("saveGame_" + saveSlot, currentGame)
+function loadGame(saveslot){
+    currentGameData = JSON.parse(window.localStorage.getItem("saveGame_" + saveSlot))
     return true
 }
 
@@ -162,9 +182,12 @@ Game.init = function(){
     $('.state').hide();
     state_init('', 'mainMenu')
     init_music(gameMusic.overture)
-
-    if(window.localStorage){
+    console.log(window.localStorage)
+    if(window.localStorage.length > 0){
         $('#loadGame').show(1000)
+    }
+    else{
+        $('#loadGame').hide()
     }
 
 }
@@ -225,7 +248,7 @@ Game.local.init = function () {
     //console.log(this.hero)
     this.maxX = this.map.cols * this.map.tile_size - this.map.width;
     this.maxY = this.map.rows * this.map.tile_size - this.map.height;
-    this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,{x: 20, y: 20 })
+    this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,currentGameData.localWorldState.map.init)
     sprites.push(this.squall)
 
 };

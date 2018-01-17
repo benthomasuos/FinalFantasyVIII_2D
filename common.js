@@ -63,7 +63,7 @@ function debug(status){
         $('#debug').html('Game started: '+ game.gameStarted +'<br>Time elapsed: ' +  moment(game.timeElapsed).format('H:mm:ss') )
         sprites.forEach(function(d, i){
             //console.log(d)
-            $('#debug').append("<br>" + d.key + "  =>   x: " +  d.x.toFixed(1) + " y: " + d.y.toFixed(1))
+            $('#debug').append("<br>" + d.key + "  =>   x: " +  d.x.toFixed(1) + " y: " + d.y.toFixed(1) + " Distance: " + d.distance)
         })
 
 
