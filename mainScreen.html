@@ -51,66 +51,99 @@
 
 
 <div class='state' id="gameMenu">
+		<div name="gameMenu">
+			<div id="main" class="left_menu" >
+			<div id="help_bar" class="menu-window menu-help">
+				<span class="menu-title">HELP</span>
+				<span class="menu-text"></span>
+			</div>
+			<div id="character-1" name="character-1" class="menu-window character-status" help-data="#" selectable="true">
+				<div class="menu-title">STATUS</div>
+				<span name="char_name">Squall</span>
+				<span name="max_hp"> / 9999</span>
+				<span name="current_hp">HP  1039 </span>
+				<span name="char_lvl">Lv 99</span>
 
-	<div id="main" class="left_menu" >
-	<div id="help_bar" class="menu-window menu-help">
-		<span class="menu-title">HELP</span>
-		<span class="menu-text"></span>
-	</div>
-	<div id="character-1" name="character-1" class="menu-window character-status" help-data="#" selectable="true">
-		<div class="menu-title">STATUS</div>
-		<span name="char_name">Squall</span>
-		<span name="max_hp"> / 9999</span>
-		<span name="current_hp">HP  1039 </span>
-		<span name="char_lvl">Lv 99</span>
+			</div>
+			<div id="character-2" name="character-2" class="menu-window character-status" help-data="#" selectable="true">
+				<div class="menu-title">STATUS</div>
+				<span name="char_name">Zell</span>
+				<span name="max_hp"> / 9999</span>
+				<span name="current_hp">HP  7863 </span>
+				<span name="char_lvl">Lv 99</span>
+			</div>
+			<div id="character-3" name="character-3" class="menu-window character-status" help-data="#" selectable="true">
+				<div class="menu-title">STATUS</div>
+				<span name="char_name">Quistis</span>
+				<span name="max_hp"> / 9999</span>
+				<span name="current_hp">HP  8965 </span>
+				<span name="char_lvl">Lv 99</span>
+			</div>
+			<div id="character-other" class="menu-window character-other">
+			</div>
+			<div id="location" class="menu-window menu-location">Balamb Garden</div>
+		</div>
 
-	</div>
-	<div id="character-2" name="character-2" class="menu-window character-status" help-data="#" selectable="true">
-		<div class="menu-title">STATUS</div>
-		<span name="char_name">Zell</span>
-		<span name="max_hp"> / 9999</span>
-		<span name="current_hp">HP  7863 </span>
-		<span name="char_lvl">Lv 99</span>
-	</div>
-	<div id="character-3" name="character-3" class="menu-window character-status" help-data="#" selectable="true">
-		<div class="menu-title">STATUS</div>
-		<span name="char_name">Quistis</span>
-		<span name="max_hp"> / 9999</span>
-		<span name="current_hp">HP  8965 </span>
-		<span name="char_lvl">Lv 99</span>
-	</div>
-	<div id="character-other" class="menu-window character-other">
-	</div>
-	<div id="location" class="menu-window menu-location">Balamb Garden</div>
-</div>
+		<div id="right_menu" class="menu-window right_menu">
+			<div name='menuOption' id="junction-menu" class="menu-item" help-data="Junction menu" selectable="true" active>Junction</div>
+			<div name='menuOption' id="item-menu" class="menu-item" help-data="Item menu" selectable="true">Item</div>
+			<div name='menuOption' id="magic-menu" class="menu-item" help-data="Magic menu" selectable="true">Magic</div>
+			<div name='menuOption' id="status-menu" class="menu-item" help-data="Status menu" selectable="true">Status</div>
+			<div name='menuOption' id="gf-menu" class="menu-item" help-data="Guardian Force menu" selectable="true">GF</div>
+			<div name='menuOption' id="ability-menu" class="menu-item" help-data="Abilities menu" selectable="true">Ability</div>
+			<div name='menuOption' id="switch-menu" class="menu-item" help-data="Switch characters" selectable="true">Switch</div>
+			<div name='menuOption' id="card-menu" class="menu-item" help-data="Card menu" selectable="true">Card</div>
+			<div name='menuOption' id="config-menu" class="menu-item" help-data="Config menu" selectable="true">Config</div>
+			<div name='menuOption' id="tutorial-menu" class="menu-item" help-data="Show tutorials" selectable="true">Tutorial</div>
+			<div name='menuOption' id="save-menu" class="menu-item" help-data="Save game" selectable="true" disabled="true">Save</div>
+		</div>
+		<div id="status" class="menu-window play-status">
+			<div>
+				PLAY
+				<span id="total_play_time">01:20:56</span>
+			</div>
+			<div>
+				SeeD
+				<span id="seed_lvl">lvl 8</span>
+			</div>
+			<div>
+				<span id="current_gil">50000G</span>
+			</div>
 
-<div id="right_menu" class="menu-window right_menu">
-	<div name='menuOption' id="junction-menu" class="menu-item" help-data="Junction menu" selectable="true" active>Junction</div>
-	<div name='menuOption' id="item-menu" class="menu-item" help-data="Item menu" selectable="true">Item</div>
-	<div name='menuOption' id="magic-menu" class="menu-item" help-data="Magic menu" selectable="true">Magic</div>
-	<div name='menuOption' id="status-menu" class="menu-item" help-data="Status menu" selectable="true">Status</div>
-	<div name='menuOption' id="gf-menu" class="menu-item" help-data="Guardian Force menu" selectable="true">GF</div>
-	<div name='menuOption' id="ability-menu" class="menu-item" help-data="Abilities menu" selectable="true">Ability</div>
-	<div name='menuOption' id="switch-menu" class="menu-item" help-data="Switch characters" selectable="true">Switch</div>
-	<div name='menuOption' id="card-menu" class="menu-item" help-data="Card menu" selectable="true">Card</div>
-	<div name='menuOption' id="config-menu" class="menu-item" help-data="Config menu" selectable="true">Config</div>
-	<div name='menuOption' id="tutorial-menu" class="menu-item" help-data="Show tutorials" selectable="true">Tutorial</div>
-	<div name='menuOption' id="save-menu" class="menu-item" help-data="Save game" selectable="true" disabled="true">Save</div>
-</div>
-<div id="status" class="menu-window play-status">
-	<div>
-		PLAY
-		<span id="total_play_time">01:20:56</span>
-	</div>
-	<div>
-		SeeD
-		<span id="seed_lvl">lvl 8</span>
-	</div>
-	<div>
-		<span id="current_gil">50000G</span>
+		</div>
 	</div>
 
-</div>
+	<div id="junctionMenu">
+		<div class="menu-window navBar">
+		 	<div name='menuOption'>Junction</div>
+			<div name='menuOption'>Off</div>
+			<div name='menuOption'>Auto</div>
+			<div name='menuOption'>Ability</div>
+		</div>
+		<div class="menu-window">Junction</div>
+		<div class="menu-window helpBar">
+			<div class="menu-title">COMMAND</div>
+		</div>
+		<div class="character-window">
+			<img class="headshot" id="headshot"></img>
+			<div name="name"></div>
+			<div name="level"></div>
+			<div name="health_points"></div>
+			<div name="current_xp"></div>
+			<div name="xp_to_next_level"></div>
+		</div>
+		<div class="menu-window">
+			<div class="menu-title">COMMAND</div>
+		</div>
+
+
+		</div>
+
+
+
+
+
+
 </div>
 
 

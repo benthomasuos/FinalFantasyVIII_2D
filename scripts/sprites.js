@@ -2,16 +2,20 @@
 class Sprite {
  constructor(key, tileset, tilesize, num_width, num_height, position){
     this.key = key;
-    this.tileset = tileset
+    this.tileset = {
+        "file": "./assets/tile_maps/characters/allcharacters.png",
+        "width": 12,
+        "height": 8
+    }
     this.tilesize = tilesize
-    this.width = 30
-    this.height = 50
+    this.width = 32
+    this.height = 32
     this.x = position.x
     this.y = position.y
     this.frames = num_width * num_height
     this.cxt = document.getElementById('character').getContext('2d')
     this.image = new Image()
-    this.image.src = this.tileset
+    this.image.src = this.tileset.file
 
     this.frameIndex = 0;
     this.tickCount = 0;
@@ -32,7 +36,7 @@ class Sprite {
  walkUp( delta ){
      this.isMoving = true
     //console.log('Walking Up!')
-    this.animationFrames = [ 1, 0 ]
+    this.animationFrames = [ 37, 38, 37, 36 ]
     this.animate()
     if( !this.hasCollided ){
         this.y -=  delta * this.speed;
@@ -47,7 +51,7 @@ class Sprite {
  walkDown( delta ){
      this.isMoving = true
     //console.log('Walking Down!')
-    this.animationFrames = [ 1, 0 ]
+    this.animationFrames = [ 1, 2, 1, 0 ]
     this.animate()
     if( !this.hasCollided ){
         this.y +=  delta * this.speed;
@@ -62,7 +66,7 @@ class Sprite {
  walkRight( delta ){
      this.isMoving = true
     //console.log('Walking Right!')
-    this.animationFrames = [ 0, 1, 2, 1 ]
+    this.animationFrames = [ 25, 24, 25, 26 ]
     this.animate()
     if( !this.hasCollided ){
         this.x +=  delta * this.speed;
@@ -77,7 +81,7 @@ class Sprite {
  walkLeft( delta ){
      this.isMoving = true
      //console.log('Walking Left!')
-    this.animationFrames = [ 5, 4, 3, 4 ]
+    this.animationFrames = [ 13, 12, 13, 14 ]
     this.animate()
     if( !this.hasCollided ){
         this.x -=  delta * this.speed;
@@ -109,12 +113,13 @@ class Sprite {
  }
 
  draw() {
+   this.cxt.clearRect(this.x, this.y, this.width, this.height)
    var frame = this.animationFrames[this.frameIndex]
-   //console.log(frame)
+   console.log(frame,  Math.floor( frame/this.tileset.width)* this.height)
    this.cxt.drawImage(
                          this.image, // image
-                         frame * this.tilesize, // source x
-                         0, // source y
+                         frame%this.tileset.width * this.width, // source x
+                         Math.floor( frame/this.tileset.width) * this.height, // source y
                          this.width, // source width
                          this.height, // source height
                          this.x,  // target x
