@@ -56,6 +56,12 @@ var currentMap = b_garden_infirmary;
 
 var menuState = 0
 
+
+var stepsToBattle = 0
+
+
+
+
 setInterval(function(){
     currentGameData.timeElapsed += 20
     debug(currentGameData.debug)
@@ -250,6 +256,11 @@ Game.local.init = function () {
     this.maxY = this.map.rows * this.map.tile_size - this.map.height;
     this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,currentGameData.localWorldState.map.init)
     sprites.push(this.squall)
+    currentGameData.localWorldState.map.sprites.forEach(function(sprite,index){
+        sprite.draw()
+
+    })
+    stepsToBattle = currentGameData.localWorldState.map.randomBattleChance()
 
 };
 
@@ -314,21 +325,15 @@ Game.local.update = function (delta) {
 
         }
 
-    this.sprites.move("character",delta, dirx, diry);
+        if(currentGameData.localWorldState.map.chance > 0 && currentGameData.stepsSinceLastEncounter >= stepsToBattle){
+            stepsToBattle = currentGameData.localWorldState.map.randomBattleChance()
+            currentGameData.stepsSinceLastEncounter = 0
+            var monster = currentGameData.localWorldState.map.getMonster()
+            battle_init(monster)
+        }
+
 
 };
-
-Game.local.sprites.move = function(character, delta, dirx, diry){
-    //console.log(character, delta, dirx, diry)
-    //var SPEED = parseFloat(currentGameData.localSpeed);
-    var SPEED = 100
-    this[character].x += dirx * SPEED * delta;
-    this[character].y += diry * SPEED * delta;
-    // clamp values
-    //this[character].x = Math.max(0, Math.min(this[character].x, Game.local.maxX));
-    //this[character].y = Math.max(0, Math.min(this[character].y, Game.local.maxY));
-
-}
 
 
 Game.local.render = function () {
@@ -338,6 +343,10 @@ Game.local.render = function () {
     // draw game sprites
     ////////
     this.squall.draw()
+
+    sprites.forEach(function(sprite, index){
+        sprite.draw()
+    })
 
     // draw map top layer
     this.map.drawForeground( this.tileAtlas );
@@ -422,7 +431,6 @@ Game.gameMenu.run = function(){
 
 
 function state_init(previousState, newState){
-
     Game.state = newState
     if(newState != previousState ){
         $(window).off("keydown")

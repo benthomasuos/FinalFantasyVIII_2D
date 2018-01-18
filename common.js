@@ -61,10 +61,12 @@ function debug(status){
     $('#debug').html('')
     //if(status == true){
         $('#debug').html('Game started: '+ game.gameStarted +'<br>Time elapsed: ' +  moment(game.timeElapsed).format('H:mm:ss') )
+        $('#debug').append("<br>" + game.localWorldState.map.location)
         sprites.forEach(function(d, i){
             //console.log(d)
-            $('#debug').append("<br>" + d.key + "  =>   x: " +  d.x.toFixed(1) + " y: " + d.y.toFixed(1) + " Distance: " + d.distance)
+            $('#debug').append("<br>" + d.key + "  =>   x: " +  d.x.toFixed(1) + " y: " + d.y.toFixed(1) + " Distance: " + currentGameData.totalSteps)
         })
+        $('#debug').append("<br>Steps since last encounter: " + currentGameData.stepsSinceLastEncounter)
 
 
     //}

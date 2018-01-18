@@ -41,10 +41,13 @@ class Sprite {
      this.isMoving = true
     //console.log('Walking Up!')
     this.animationFrames = [ 37, 38, 37, 36 ]
-    this.animate()
+    this.update()
     if( !this.hasCollided ){
+        var steps = Math.floor(delta * this.speed)
         this.y -=  delta * this.speed;
-        this.distance += Math.floor(delta * this.speed)
+        this.distance += steps
+        currentGameData.totalSteps += steps
+        currentGameData.stepsSinceLastEncounter += steps
     }
     this.direction = 'up'
  }
@@ -52,10 +55,13 @@ class Sprite {
      this.isMoving = true
     //console.log('Walking Down!')
     this.animationFrames = [ 1, 2, 1, 0 ]
-    this.animate()
+    this.update()
     if( !this.hasCollided ){
+        var steps = Math.floor(delta * this.speed)
         this.y +=  delta * this.speed;
-        this.distance += Math.floor(delta * this.speed)
+        this.distance += steps
+        currentGameData.totalSteps += steps
+        currentGameData.stepsSinceLastEncounter += steps
     }
     this.direction = 'down'
  }
@@ -63,10 +69,13 @@ class Sprite {
      this.isMoving = true
     //console.log('Walking Right!')
     this.animationFrames = [ 25, 24, 25, 26 ]
-    this.animate()
+    this.update()
     if( !this.hasCollided ){
+        var steps = Math.floor(delta * this.speed)
         this.x +=  delta * this.speed;
-        this.distance += Math.floor(delta * this.speed)
+        this.distance += steps
+        currentGameData.totalSteps += steps
+        currentGameData.stepsSinceLastEncounter += steps
     }
     this.direction = 'right'
  }
@@ -74,10 +83,13 @@ class Sprite {
      this.isMoving = true
      //console.log('Walking Left!')
     this.animationFrames = [ 13, 12, 13, 14 ]
-    this.animate()
+    this.update()
     if( !this.hasCollided ){
+        var steps = Math.floor(delta * this.speed)
         this.x -=  delta * this.speed;
-        this.distance += Math.floor(delta * this.speed)
+        this.distance += steps
+        currentGameData.totalSteps += steps
+        currentGameData.stepsSinceLastEncounter += steps
     }
     this.direction = 'left'
  }
@@ -140,7 +152,7 @@ checkExits(side){
 
  }
 
- update(tick){
+ update(){
         //console.log(this.animationFrames[this.frameIndex])
 
         if(this.isMoving == false ){
@@ -165,12 +177,7 @@ checkExits(side){
 
 
 }
-animate(tick){
-    //window.requestAnimationFrame(this.animate)
-    this.update(tick)
 
-
-}
 
  pause(){
   console.log('Animation paused')

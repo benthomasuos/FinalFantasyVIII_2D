@@ -8,6 +8,8 @@ class GameData {
         this.gameStarted = moment().format('MMMM Do YYYY, h:mm:ss a');
         this.timeElapsed = 0.0; // time since beginning of game
         this.currentQuest = new Quest;
+        this.totalSteps = 0
+        this.stepsSinceLastEncounter = 0
         this.localWorldState = {
                 map: b_garden_infirmary,
                 char_position: { x : 120 , y : 120 }
