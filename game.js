@@ -244,23 +244,22 @@ Game.local.load = function (mainCharacter) {
 
 
 Game.local.init = function () {
+    this.map = currentGameData.localWorldState.map
     Keyboard.listenForEvents(Keyboard._keys)
     init_music(this.map.music)
+    this.map.init_map()
+    console.log(this.map.tileAtlas)
 
-    this.tileAtlas = Loader.getImage('tiles');
-    //console.log(this.tileAtlas)
-    //this.sprites.character = {x: 32, y: 32, image: Loader.getImage('character')};
-    //console.log(map)
-    //console.log(this.hero)
     this.maxX = this.map.cols * this.map.tile_size - this.map.width;
     this.maxY = this.map.rows * this.map.tile_size - this.map.height;
-    this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,currentGameData.localWorldState.map.init)
+
+    this.squall = new Sprite('squall', './assets/tile_maps/characters/squall_sprites.png',32,9,5,this.map.init)
     sprites.push(this.squall)
-    currentGameData.localWorldState.map.sprites.forEach(function(sprite,index){
+    this.map.sprites.forEach(function(sprite,index){
         sprite.draw()
 
     })
-    stepsToBattle = currentGameData.localWorldState.map.randomBattleChance()
+    stepsToBattle = this.map.randomBattleChance()
 
 };
 
@@ -274,8 +273,8 @@ Game.local.tick = function (elapsed) {
     window.requestAnimationFrame(this.tick);
 
     // clear previous frame
-    this.map.contexts.character.clearRect(0, 0, 600, 600);
-    this.map.contexts.foreground.clearRect(0, 0, 600, 600);
+    this.map.contexts.character.clearRect(0, 0, 640, 500);
+    this.map.contexts.foreground.clearRect(0, 0, 640, 500);
 
     // compute delta time in seconds -- also cap it
     var delta = (elapsed - this._previousElapsed) / 1000.0;
@@ -325,10 +324,10 @@ Game.local.update = function (delta) {
 
         }
 
-        if(currentGameData.localWorldState.map.chance > 0 && currentGameData.stepsSinceLastEncounter >= stepsToBattle){
-            stepsToBattle = currentGameData.localWorldState.map.randomBattleChance()
+        if(this.map.chance > 0 && currentGameData.stepsSinceLastEncounter >= stepsToBattle){
+            stepsToBattle = this.map.randomBattleChance()
             currentGameData.stepsSinceLastEncounter = 0
-            var monster = currentGameData.localWorldState.map.getMonster()
+            var monster = this.map.getMonster()
             battle_init(monster)
         }
 
@@ -427,7 +426,11 @@ Game.gameMenu.run = function(){
 
 }
 
+function battle_init(monster){
 
+    battle = new Battle(monster)
+
+}
 
 
 function state_init(previousState, newState){

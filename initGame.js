@@ -209,99 +209,30 @@ var items = [
     FORBID MAG-RF	2 Meteor Stone
     Energy Crystal	Teaches the SUMMAG+30% ability	1
     Samantha Soul	Teaches the SUMMAG+40% ability	20
-    1	GFAB MED-RF
-    TIME MAG-RF	Elem Atk
-    60 Triple
     Healing Mail	Teaches the GFHP+10% ability	1
-    1
-    1	RECOV MED-RF
-    GF RECOV MED-RF
-    L MAG-RF	6 Hi-Potion
-    Pet House
-    20 Curaga
     Silver mail	Teaches the GFHP+20% ability	1
-    5	GF RECOV MED-RF
-    GFAB MED-RF	2 Pet House
-    Gold Armor
     Gold Armor	Teaches the GFHP+30% ability	1
-    5	GF RECOV MED-RF
-    GFAB MED-RF	4 Pet Houses
-    Diamond Armor
     Diamond Armor	Teaches the GFHP+40% ability	1
-    1
-    5	TOOL-RF
-    GF RECOV MED-RF
-    GFAB MED-RF	50 Cottages
-    16 Pet Houses
-    Elem Guard
     Regen Ring	Teaches the HP+20% ability	1
-    1
-    1
-    1	RECOV MED-RF
-    TOOL-RF
-    GF RECOV MED-RF
-    L MAG-RF	8 Phoenix Downs
-    5 Tents
-    6 G-Returners
-    20 Full-Life
     Giant's Ring	Teaches the HP+40% ability	10
-    1	GFAB MED-RF
-    SUPT MAG-RF	Gaea's Ring
-    60 Protect
     Gaea's Ring	Teaches the HP+80% ability	1	FORBID MED-RF	HP Up
     Strength Love	Teaches the STR+20% ability	1	TOOL-RF	2 Aura Stone
     Power Wrist	Teaches the STR+40% ability	1
-    10	TOOL-RF
-    GFAB MED-RF	10 Aura Stone
-    Hyper Wrist
     Hyper Wrist	Teaches the STR+60% ability	10	FORBID MAG-RF	Str Up
     Turtle Shell	Teaches the VIT+20% ability	1
-    1	TOOL-RF
-    SUPT MAG-RF	10 Protect Stone
-    30 Protect
     Orihalcon	Teaches the VIT+40% ability	1
-    10	TOOL-RF
-    GFAB MED-RF	30 Protect Stone
-    Adamantine
     Adamantine	Teaches the VIT+60% ability	5
-    20	FORBID MED
-    GFAB MED-RF	Vit Up
-    Steel Curtain
     Rune Armlet	Teaches the SPR+20% ability	1
-    1	TOOL-RF
-    SUPT MAG-RF	10 Shell Stone
-    40 Shell
     Force Armlet	Teaches the SPR+40% ability	1
-    10	TOOL-RF
-    GFAB MED-RF	30 Shell Stone
-    Magic Armlet
     Magic Armlet	Teaches the SPR+60% ability	10
-    20	FORBID MED-RF
-    GFAB MED-RF	Spr Up
-    Moon Curtain
     Circlet	Teaches the MAG+20% ability	1	TOOL-RF	2 Aura Stone
     Hypno Crown	Teaches the MAG+40% ability	1
-    10	TOOL-RF
-    GFAB MED-RF	10 Aura Stone
-    Royal Crown
     Royal Crown	Teaches the MAG+60% ability	10
-    20	FORBID MED-RF
-    GFAB MED-RF	Mag Up
-    Status Atk
     Jet Engine	Teaches the SPD+20% ability	50
-    10	FORBID MED-RF
-    GFAB MED-RF	Spd Up
-    Rocket Engine
-    Rocket Engine	Teaches the SPD+40% ability	5
-    1	FORBID MED-RF
-    TIME MAG-RF	Spd Up
-    50 Triple
+    Rocket Engine	Teaches the SPD+40% ability
     Moon Curtain	Teaches the Auto-Shell ability	1	SUPT MAG-RF	100 Shell
     Steel Curtain	Teaches the Auto-Protect ability	1	SUPT MAG-RF	100 Protect
     Glow Curtain	Teaches the Auto-Reflect ability	2
-    1	GFAB MED-RF
-    SUPT MAG-RF	Monk's Code
-    100 Reflect
     Accelerator	Teaches the Auto-Haste ability	1	TIME MAG-RF	100 Haste
     Monk's Code	Teaches the Counter ability	1	FORBID MED-RF	Str Up
     Knight's Code	Teaches the Cover ability	1	FORBID MED-RF	Vit Up
@@ -309,6 +240,8 @@ var items = [
     Hundred Needles	Teaches the Return Damage ability	1	FORBID MED-RF	Spd Up
     Three Stars	Teaches the EXPENDx3 ability	1	TIME MAG-RF	100 Triples
     Ribbon	Teaches the Ribbon ability	1	GFAB MED-RF	Status Guard
+
+
     Ammo Items
     Normal Ammo	Regular Ammo	1	AMMO-RF	Fast Ammo
     Shotgun Ammo	Ammo that hits all enemies	1	AMMO-RF	2 Fast Ammo
@@ -318,6 +251,8 @@ var items = [
     Fast Ammo	Rapid fire ammo	-	-	-
     AP Ammo	Armor-piercing ammo	-	-	-
     Pulse Ammo	Devastating Ammo	5	FORBID MAG-RF	Ultima
+
+
     Tool Items
     M-Stone Piece	Stone with little magic power	1
     Magic Stone	Stone with magic power	1
@@ -356,67 +291,26 @@ var items = [
 
     Compatibility Items
     Bomb Fragment	Stone with fire element	1
-    100
-    1	AMMO-RF
-    GFAB MED-RF
-    F MAG-RF	20 Fire Ammo
-    Bomb Spirit
-    20 Firaga
     Red Fang	Dragon's fang imbued with fire	1
-    1	AMMO-RF
-    F MAG-RF	40 Fire Ammo
-    20 Firaga
     Arctic Wind	Contains ice elemental wind	1	I MAG-RF	20 Blizzara
     North Wind	Contains strong ice elemental wind	1	I MAG-RF	20 Blizzaga
     Dynamo Stone	Stone with thunder element	1	T MAG-RF	20 Thundaga
     Shear Feather	Bird's feather flying on the wind	1	T MAG-RF	20 Aero
     Venom Fang	Poisonous fang	1
-    1
-    1	ST MED-RF
-    AMMO-RF
-    ST MAG-RF	10 Antidote
-    20 Dark Ammo
-    20 Bio
     Steel Orb	Orb with gravitational power	1	TIME MAG-RF	15 Demi
     Moon Stone	Holy moon stone with monsters inside	1
-    1	TOOL-RF
-    FORBID MAG-RF	2 Holy Stone
-    20 Holy
     Dino Bone	Large dinosaur bone	1	TIME MAG-RF	20 Quakes
     Windmill	Windmill containing wind energy	1	T MAG-RF	20 Tornado
     Dragon Skin	Durable dragon skin	100
-    1	GFAB MED-RF
-    SUPT MAG-RF	Glow Curtain
-    20 Reflect
     Fish Fin	Fastitocalon's fin	1	I MAG-RF	20 Water
     Dragon Fin	Very hard dragon scale	1	TIME MAG-RF	20 Double
     Silence Powder	Powder containing silence	1
-    1	ST MED-RF
-    ST MAG-RF	3 Echo Screens
-    20 Silence
     Poison Powder	Powder Containing Poison	1
-    1	ST MED-RF
-    AMMO-RF	3 Antidote
-    10 Dark Ammo
     Dead Spirit	Contains Death	1	TOOL-RF
-    L MAG-RF	2 Death Stones
-    20 Death
-    Chef's Knife	Tonberry's Knife	1
-    1	AMMO-RF
-    L MAG-RF	20 AP Ammo
-    30 Death
     Cactus thorn	Cactuar's Thorn	1
-    100	AMMO-RF
-    GFAB MED-RF	40 Demolition Ammo
-    Hundred Needles
     Shaman Stone	Stone with mystical power	1
-    10
-    1	TOOL-RF
-    FORBID MED-RF*
-    GFAB MED-RF	LuvluvG
-    Hero Trial
-    Rosetta Stone
-    *Indicates Doomtrain needs to be at LV 100, to refine 10 Shaman Stones into 1 Hero Trial
+
+
     Power-Up Items
     HP Up	Raises HP by 10	2	GFAB MED-RF	HP-J Scroll
     Str Up	Raises strength by 1	2	GFAB MED-RF	Str-J Scroll
@@ -449,6 +343,33 @@ var guardian_forces = {
 }
 
 var monsters = {
+
+
+}
+
+class Battle {
+
+    constructor(monster){
+        this.type = monster.type // normal or boss
+        this.playMusic()
+    }
+
+    playMusic(){
+        var audio = document.getElementById("gameMusic")
+        if(this.type == "normal"){
+            init_music(dont_be_afraid)
+
+        }
+        else if( this.type == "boss"){
+            init_music(force_your_way)
+        }
+    }
+
+
+    getBackground(){
+        return currentGameData.localWorldState.map.battleMap
+    }
+
 
 
 }

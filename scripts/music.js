@@ -75,7 +75,7 @@ var gameMusic = {
     "force_your_way":{
         name: "Force Your Way",
         file: {
-            name: '../assets/music/.mp3',
+            name: '../assets/music/Force_Your_Way_01.mp3',
             artist: "Nobuo Uematsu"
         }
     },

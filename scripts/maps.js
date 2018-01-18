@@ -1,8 +1,8 @@
 class Local_Map {
     constructor(){
     this.location = "test";
-    this.width = 25;
-    this.height = 18;
+    this.width = 20;
+    this.height = 16;
     this.cols = 20;
     this.rows = 16;
     this.tile_size = 32;
@@ -26,6 +26,11 @@ class Local_Map {
     ]
     };
 
+    init_map(){
+        this.tileAtlas = new Image()
+        this.tileAtlas.src = this.tileset
+        //console.log(this.tileAtlas)
+    }
 
     getMonster(){
         // weighted selection of monster based on chance of finding it from the list in the area
@@ -45,7 +50,8 @@ class Local_Map {
     }
 
 
-    drawBackground( tileAtlas ) {
+    drawBackground()  {
+    
       //console.log(layer , tileAtlas, context)
       //console.log("Drawing layer: " + layer + " for map: " + this.location)
       for (var c = 0; c < this.width; c++) {
@@ -53,7 +59,7 @@ class Local_Map {
                  var tile = this.getTile('background', c, r);
                  if (tile >= 0) { // -1 => empty tile
                      this.contexts.background.drawImage(
-                         tileAtlas, // image
+                         this.tileAtlas, // image
                          tile * this.tile_size, // source x
                          0, // source y
                          this.tile_size, // source width
@@ -68,13 +74,13 @@ class Local_Map {
       }
     };
 
-    drawForeground( tileAtlas ) {
+    drawForeground() {
       for (var c = 0; c < this.width; c++) {
              for (var r = 0; r < this.height; r++) {
                  var tile = this.getTile('foreground', c, r);
                  if (tile >= 0) { // -1 => empty tile
                      this.contexts.foreground.drawImage(
-                         tileAtlas, // image
+                         this.tileAtlas, // image
                          tile * this.tile_size, // source x
                          0, // source y
                          this.tile_size, // source width
